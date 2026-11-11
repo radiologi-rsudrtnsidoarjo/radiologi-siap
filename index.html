@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portal Edukasi Radiologi - RSUD R.T. Notopuro Sidoarjo</title>
 
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,19 +12,16 @@
       rel="stylesheet"
     />
 
-    <!-- FontAwesome Icons -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
 
-    <!-- Swiper CSS untuk Slider -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
     />
 
-    <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -54,9 +50,7 @@
       };
     </script>
 
-    <!-- Custom CSS -->
     <style>
-      /* Animasi Gelombang Footer */
       .waves {
         position: relative;
         width: 100%;
@@ -96,7 +90,6 @@
         }
       }
 
-      /* Lightbox Iframe */
       #lightbox iframe {
         width: 100%;
         height: 100%;
@@ -104,7 +97,6 @@
         border-radius: 0.75rem;
       }
 
-      /* Swiper Adjustments */
       .swiper-pagination-bullet-active {
         background-color: #0ea5e9 !important;
       }
@@ -122,7 +114,6 @@
         font-weight: bold;
       }
 
-      /* Nav Active Link Style */
       .nav-link.active {
         color: #0ea5e9;
         font-weight: 700;
@@ -135,7 +126,6 @@
     </style>
 
     <script>
-      // Set Default Tema sebelum body render untuk mencegah flash
       if (
         localStorage.getItem("color-theme") === "dark" ||
         (!("color-theme" in localStorage) &&
@@ -151,13 +141,11 @@
   <body
     class="bg-gray-50 text-gray-800 dark:bg-dark-bg dark:text-dark-text transition-colors duration-300 font-sans"
   >
-    <!-- Header / Navbar Sticky Top -->
     <nav
       class="sticky top-0 w-full z-40 bg-white/95 dark:bg-dark-bg/95 backdrop-blur-md shadow-md transition-colors duration-300"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
-          <!-- Logo -->
           <div class="flex items-center gap-3">
             <img
               src="https://drive.google.com/thumbnail?id=1k5jKAOSHwi24npalrPyOsriBQoPzmAlm&sz=w500"
@@ -165,7 +153,7 @@
               class="h-10 md:h-12 drop-shadow-sm"
             />
             <img
-              src="https://drive.google.com/thumbnail?id=1W5KOxcNsAZTwgXTNUEe2pcasmhzDooEA&sz=w500"
+              src="https://drive.google.com/thumbnail?id=1XWEXpYpYe53A6AGuUVy3JbVYncXcVYDx&sz=w500"
               alt="Logo SIAP"
               class="h-10 md:h-12 drop-shadow-sm hidden sm:block"
             />
@@ -180,7 +168,6 @@
             </div>
           </div>
 
-          <!-- Desktop Menu -->
           <div class="hidden md:flex items-center space-x-8">
             <a
               href="#beranda"
@@ -198,29 +185,19 @@
               >Edukasi & Panduan</a
             >
 
-            <!-- Tombol Ganti Tema -->
             <button
-              id="theme-toggle"
-              class="ml-4 p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition outline-none"
+              class="theme-toggle ml-4 p-2 rounded-full w-10 h-10 flex items-center justify-center bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition outline-none"
             >
-              <i
-                id="theme-toggle-dark-icon"
-                class="fa-solid fa-moon text-gray-700 hidden"
-              ></i>
-              <i
-                id="theme-toggle-light-icon"
-                class="fa-solid fa-sun text-yellow-400 hidden"
-              ></i>
+              <i class="fa-solid fa-moon text-gray-700 block dark:hidden"></i>
+              <i class="fa-solid fa-sun text-yellow-400 hidden dark:block"></i>
             </button>
           </div>
 
-          <!-- Mobile Menu Button -->
           <div class="md:hidden flex items-center gap-4">
             <button
-              id="theme-toggle-mobile"
-              class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition outline-none"
+              class="theme-toggle p-2 rounded-full w-10 h-10 flex items-center justify-center bg-gray-200 dark:bg-gray-700 transition outline-none"
             >
-              <i class="fa-solid fa-moon text-gray-700 dark:hidden"></i>
+              <i class="fa-solid fa-moon text-gray-700 block dark:hidden"></i>
               <i class="fa-solid fa-sun text-yellow-400 hidden dark:block"></i>
             </button>
             <button
@@ -233,7 +210,6 @@
         </div>
       </div>
 
-      <!-- Mobile Menu Dropdown -->
       <div
         id="mobile-menu"
         class="hidden md:hidden bg-white dark:bg-dark-card border-t dark:border-gray-700 absolute w-full shadow-lg z-30"
@@ -258,12 +234,9 @@
       </div>
     </nav>
 
-    <!-- Section: BERANDA (Slider & Hero) -->
     <section id="beranda" class="relative">
-      <!-- Slider Swiper -->
       <div class="swiper mySwiper h-[60vh] md:h-[75vh] w-full">
         <div class="swiper-wrapper">
-          <!-- Slide 1 (Banner from Drive) -->
           <div class="swiper-slide relative">
             <img
               src="https://drive.google.com/thumbnail?id=18GdWXxzsL_fERy8Xv1kD_R9zZc_gfONx&sz=w1920"
@@ -291,7 +264,6 @@
             </div>
           </div>
 
-          <!-- Slide 2 (Asset Publik - Mesin CT Scan) -->
           <div class="swiper-slide relative">
             <img
               src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=1200"
@@ -319,7 +291,6 @@
             </div>
           </div>
 
-          <!-- Slide 3 (Asset Publik - Dokter Radiologi) -->
           <div class="swiper-slide relative">
             <img
               src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&q=80&w=1200"
@@ -347,14 +318,13 @@
             </div>
           </div>
         </div>
-        <!-- Swiper Controls -->
+
         <div class="swiper-button-next hidden md:flex"></div>
         <div class="swiper-button-prev hidden md:flex"></div>
         <div class="swiper-pagination"></div>
       </div>
     </section>
 
-    <!-- Section: TENTANG RS -->
     <section
       id="tentang"
       class="py-16 md:py-24 bg-white dark:bg-dark-card transition-colors duration-300"
@@ -386,34 +356,60 @@
       </div>
     </section>
 
-    <!-- Section: EDUKASI / BLOG -->
     <section
       id="edukasi"
       class="py-16 md:py-24 bg-gray-50 dark:bg-dark-bg transition-colors duration-300"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
+        <div class="text-center mb-10">
           <h2
             class="text-3xl md:text-4xl font-bold mb-4 text-gray-800 dark:text-white"
           >
             Kumpulan Panduan & Edukasi
           </h2>
           <p class="text-gray-600 dark:text-gray-400">
-            Klik pada materi di bawah ini untuk membaca secara layar penuh.
+            Temukan dan baca materi panduan radiologi dengan mudah.
           </p>
         </div>
 
-        <!-- Grid Container -->
+        <div class="max-w-2xl mx-auto mb-12 relative group">
+          <div
+            class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none transition-colors duration-300 group-focus-within:text-brand-500"
+          >
+            <i
+              class="fa-solid fa-search text-gray-400 group-focus-within:text-brand-500"
+            ></i>
+          </div>
+          <input
+            type="text"
+            id="searchInput"
+            class="w-full pl-14 pr-12 py-4 rounded-full bg-white dark:bg-dark-card border border-gray-200 dark:border-gray-700 focus:border-brand-500 dark:focus:border-brand-500 focus:ring-4 focus:ring-brand-500/20 shadow-sm hover:shadow-md focus:shadow-lg text-gray-800 dark:text-white outline-none transition-all duration-300 md:text-lg placeholder-gray-400"
+            placeholder="Cari panduan (mis. CT-Scan, USG, Kontras)..."
+          />
+          <button
+            id="clearSearchBtn"
+            class="absolute inset-y-0 right-0 pr-5 flex items-center text-gray-400 hover:text-red-500 hidden transition-colors duration-300 outline-none"
+          >
+            <i class="fa-solid fa-xmark text-xl"></i>
+          </button>
+        </div>
+
+        <div id="empty-state" class="hidden text-center py-12">
+          <i
+            class="fa-regular fa-folder-open text-5xl text-gray-300 dark:text-gray-600 mb-4"
+          ></i>
+          <p class="text-lg text-gray-500 dark:text-gray-400">
+            Panduan tidak ditemukan. Silakan coba kata kunci lain.
+          </p>
+        </div>
+
         <div
           id="content-grid"
           class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
-        >
-          <!-- Konten akan dirender melalui JavaScript -->
-        </div>
+        ></div>
       </div>
     </section>
 
-    <!-- Lightbox Modal untuk Viewer GDrive -->
     <div
       id="lightbox"
       class="fixed inset-0 z-[60] hidden bg-black bg-opacity-95 backdrop-blur-sm flex items-center justify-center p-2 md:p-6 transition-opacity"
@@ -421,7 +417,6 @@
       <div
         class="relative w-full max-w-5xl h-[85vh] md:h-[90vh] bg-white dark:bg-dark-bg rounded-xl shadow-2xl overflow-hidden flex flex-col"
       >
-        <!-- Header Modal -->
         <div
           class="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800"
         >
@@ -433,17 +428,16 @@
           </h3>
           <button
             onclick="closeLightbox()"
-            class="text-gray-500 hover:text-red-500 transition-colors w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-gray-700 shadow-sm"
+            class="text-gray-500 hover:text-red-500 transition-colors w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-gray-700 shadow-sm outline-none"
           >
             <i class="fa-solid fa-xmark text-xl"></i>
           </button>
         </div>
-        <!-- Iframe Container -->
+
         <div
           class="flex-1 w-full h-full bg-gray-200 dark:bg-gray-900 flex items-center justify-center relative"
           id="iframe-container"
         >
-          <!-- Loading Spinner -->
           <div
             class="absolute flex flex-col items-center justify-center text-brand-500 z-0"
           >
@@ -454,20 +448,17 @@
       </div>
     </div>
 
-    <!-- Tombol Scroll to Top -->
     <button
       id="scrollToTopBtn"
-      class="fixed bottom-6 right-6 z-50 p-4 rounded-full bg-brand-500 hover:bg-brand-600 text-white shadow-xl transition-all duration-300 opacity-0 translate-y-10 pointer-events-none outline-none focus:ring-4 focus:ring-brand-300"
+      class="fixed bottom-6 right-6 z-50 p-4 rounded-full bg-brand-500 hover:bg-brand-600 text-white shadow-xl transition-all duration-300 opacity-0 translate-y-10 pointer-events-none outline-none focus:ring-4 focus:ring-brand-300 flex items-center justify-center w-12 h-12"
     >
       <i class="fa-solid fa-chevron-up text-xl"></i>
     </button>
 
-    <!-- Footer -->
     <footer
       id="kontak"
       class="relative bg-gray-50 dark:bg-dark-bg transition-colors duration-300 pt-10 mt-auto"
     >
-      <!-- SVG Gelombang -->
       <svg
         class="waves block w-full"
         xmlns="http://www.w3.org/2000/svg"
@@ -511,12 +502,9 @@
       </div>
     </footer>
 
-    <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
 
-    <!-- JavaScript Interaktivitas -->
     <script>
-      // 1. Inisialisasi Swiper Slider
       var swiper = new Swiper(".mySwiper", {
         spaceBetween: 0,
         centeredSlides: true,
@@ -535,7 +523,6 @@
         },
       });
 
-      // 2. Data Setup (Aset Edukasi)
       const postsData = [
         {
           id: "1iy47XianYBBhjQeMmGcwTs3rk8mNd9Ut",
@@ -600,7 +587,6 @@
         },
       ];
 
-      // 3. Merender Grid Konten
       const gridContainer = document.getElementById("content-grid");
 
       postsData.forEach((post) => {
@@ -608,7 +594,8 @@
 
         const card = document.createElement("div");
         card.className =
-          "bg-white dark:bg-dark-card rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 dark:border-gray-800 overflow-hidden cursor-pointer transform hover:-translate-y-2 transition-all duration-300 flex flex-col group";
+          "post-card bg-white dark:bg-dark-card rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 dark:border-gray-800 overflow-hidden cursor-pointer transform hover:-translate-y-2 transition-all duration-300 flex flex-col group";
+        card.setAttribute("data-title", post.title);
         card.onclick = () => openLightbox(post.id, post.title);
 
         card.innerHTML = `
@@ -627,7 +614,44 @@
         gridContainer.appendChild(card);
       });
 
-      // 4. Sistem Lightbox
+      const searchInput = document.getElementById("searchInput");
+      const clearSearchBtn = document.getElementById("clearSearchBtn");
+      const emptyState = document.getElementById("empty-state");
+      const postCards = document.querySelectorAll(".post-card");
+
+      searchInput.addEventListener("input", function (e) {
+        const searchTerm = e.target.value.toLowerCase();
+        let hasVisibleCards = false;
+
+        if (searchTerm.length > 0) {
+          clearSearchBtn.classList.remove("hidden");
+        } else {
+          clearSearchBtn.classList.add("hidden");
+        }
+
+        postCards.forEach((card) => {
+          const title = card.getAttribute("data-title").toLowerCase();
+          if (title.includes(searchTerm)) {
+            card.style.display = "flex";
+            hasVisibleCards = true;
+          } else {
+            card.style.display = "none";
+          }
+        });
+
+        if (hasVisibleCards) {
+          emptyState.classList.add("hidden");
+        } else {
+          emptyState.classList.remove("hidden");
+        }
+      });
+
+      clearSearchBtn.addEventListener("click", () => {
+        searchInput.value = "";
+        searchInput.dispatchEvent(new Event("input"));
+        searchInput.focus();
+      });
+
       const lightbox = document.getElementById("lightbox");
       const lightboxTitle = document.getElementById("lightbox-title");
       const iframeContainer = document.getElementById("iframe-container");
@@ -657,7 +681,6 @@
         if (e.target === lightbox) closeLightbox();
       });
 
-      // 5. Scroll Spy (Menu Navigasi Aktif sesuai Section) & Scroll to Top
       const sections = document.querySelectorAll("section");
       const navLinks = document.querySelectorAll(".nav-link");
       const mobileLinks = document.querySelectorAll(".mobile-link");
@@ -667,7 +690,6 @@
         let current = "";
         const scrollY = window.pageYOffset;
 
-        // Logika Scroll to Top Button
         if (scrollY > 300) {
           scrollTopBtn.classList.remove(
             "opacity-0",
@@ -692,7 +714,6 @@
           );
         }
 
-        // Logika Scroll Spy Navigasi
         sections.forEach((section) => {
           const sectionTop = section.offsetTop;
           const sectionHeight = section.clientHeight;
@@ -701,7 +722,6 @@
           }
         });
 
-        // Update Desktop Nav
         navLinks.forEach((a) => {
           a.classList.remove("active");
           if (a.getAttribute("href") === `#${current}`) {
@@ -709,7 +729,6 @@
           }
         });
 
-        // Update Mobile Nav
         mobileLinks.forEach((a) => {
           a.classList.remove(
             "text-brand-600",
@@ -730,12 +749,10 @@
         });
       });
 
-      // Event Klik Tombol Scroll To Top
       scrollTopBtn.addEventListener("click", () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
       });
 
-      // 6. Mobile Menu Toggle
       const mobileMenuBtn = document.getElementById("mobile-menu-btn");
       const mobileMenu = document.getElementById("mobile-menu");
 
@@ -743,14 +760,12 @@
         mobileMenu.classList.toggle("hidden");
       });
 
-      // Tutup menu mobile ketika link diklik
       mobileLinks.forEach((link) => {
         link.addEventListener("click", () => {
           mobileMenu.classList.add("hidden");
         });
       });
 
-      // 7. Dark Mode Logic
       function toggleTheme() {
         const isDark = document.documentElement.classList.contains("dark");
         if (isDark) {
@@ -760,33 +775,12 @@
           document.documentElement.classList.add("dark");
           localStorage.setItem("color-theme", "dark");
         }
-        updateThemeIcons();
       }
 
-      function updateThemeIcons() {
-        const darkIcons = document.querySelectorAll(".fa-moon");
-        const lightIcons = document.querySelectorAll(".fa-sun");
-
-        if (document.documentElement.classList.contains("dark")) {
-          darkIcons.forEach((icon) => icon.classList.add("hidden"));
-          lightIcons.forEach((icon) => icon.classList.remove("hidden"));
-          lightIcons.forEach((icon) => (icon.style.display = "block"));
-        } else {
-          lightIcons.forEach((icon) => icon.classList.add("hidden"));
-          darkIcons.forEach((icon) => icon.classList.remove("hidden"));
-          darkIcons.forEach((icon) => (icon.style.display = "block"));
-        }
-      }
-
-      // Initialize Icons
-      updateThemeIcons();
-
-      document
-        .getElementById("theme-toggle")
-        .addEventListener("click", toggleTheme);
-      document
-        .getElementById("theme-toggle-mobile")
-        .addEventListener("click", toggleTheme);
+      const themeToggles = document.querySelectorAll(".theme-toggle");
+      themeToggles.forEach((btn) => {
+        btn.addEventListener("click", toggleTheme);
+      });
     </script>
   </body>
 </html>
