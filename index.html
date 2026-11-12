@@ -11,16 +11,32 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
       rel="stylesheet"
     />
-
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
     />
+
+    <link
+      href="https://drive.google.com/thumbnail?id=1NCS3bYpzzsF5Yz0NpjEO-a2zTwiX7icv&sz=w150"
+      rel="shortcut icon"
+      type="image/x-icon"
+    />
+
+    <script>
+      if (
+        localStorage.getItem("color-theme") === "dark" ||
+        (!("color-theme" in localStorage) &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+    </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -28,9 +44,7 @@
         darkMode: "class",
         theme: {
           extend: {
-            fontFamily: {
-              sans: ["Inter", "sans-serif"],
-            },
+            fontFamily: { sans: ["Inter", "sans-serif"] },
             colors: {
               brand: {
                 50: "#f0f9ff",
@@ -39,10 +53,20 @@
                 600: "#0284c7",
                 900: "#0c4a6e",
               },
-              dark: {
-                bg: "#0f172a",
-                card: "#1e293b",
-                text: "#e2e8f0",
+              dark: { bg: "#0f172a", card: "#1e293b", text: "#e2e8f0" },
+            },
+            animation: {
+              "fade-in-down": "fadeInDown 0.8s ease-out forwards",
+              "fade-in-up": "fadeInUp 0.8s ease-out forwards",
+            },
+            keyframes: {
+              fadeInDown: {
+                "0%": { opacity: 0, transform: "translateY(-20px)" },
+                "100%": { opacity: 1, transform: "translateY(0)" },
+              },
+              fadeInUp: {
+                "0%": { opacity: 0, transform: "translateY(20px)" },
+                "100%": { opacity: 1, transform: "translateY(0)" },
               },
             },
           },
@@ -51,6 +75,42 @@
     </script>
 
     <style>
+      html {
+        scroll-behavior: auto !important;
+      }
+
+      #navbar {
+        background-color: theme("colors.gray.50");
+        transition: all 0.4s ease;
+      }
+      .dark #navbar {
+        background-color: theme("colors.dark.bg");
+      }
+
+      #navbar.nav-scrolled {
+        background-color: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      }
+      .dark #navbar.nav-scrolled {
+        background-color: rgba(15, 23, 42, 0.95);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      #mobile-menu {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition:
+          max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+          opacity 0.3s ease-in-out;
+      }
+      #mobile-menu.mobile-menu-open {
+        max-height: 300px;
+        opacity: 1;
+      }
+
       .waves {
         position: relative;
         width: 100%;
@@ -94,24 +154,75 @@
         width: 100%;
         height: 100%;
         border: none;
-        border-radius: 0.75rem;
       }
 
+      .swiper-pagination-bullet {
+        background-color: rgba(255, 255, 255, 0.6) !important;
+        opacity: 1 !important;
+      }
       .swiper-pagination-bullet-active {
         background-color: #0ea5e9 !important;
+        transform: scale(1.2);
       }
+
       .swiper-button-next,
       .swiper-button-prev {
         color: #0ea5e9 !important;
-        background: rgba(255, 255, 255, 0.8);
-        width: 40px;
-        height: 40px;
+        background: rgba(255, 255, 255, 0.85);
         border-radius: 50%;
+        backdrop-filter: blur(4px);
+        transition: all 0.3s;
+      }
+      .swiper-button-next:hover,
+      .swiper-button-prev:hover {
+        background: #fff;
+        transform: scale(1.1);
+        opacity: 1;
       }
       .swiper-button-next:after,
       .swiper-button-prev:after {
-        font-size: 1.2rem;
         font-weight: bold;
+      }
+
+      @media (max-width: 767px) {
+        .swiper-button-next,
+        .swiper-button-prev {
+          top: auto !important;
+          bottom: 16px !important;
+          margin-top: 0 !important;
+          width: 36px !important;
+          height: 36px !important;
+          opacity: 0.8;
+          z-index: 50 !important;
+        }
+        .swiper-button-prev {
+          left: 16px !important;
+        }
+        .swiper-button-next {
+          right: 16px !important;
+        }
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+          font-size: 14px !important;
+        }
+        .swiper-pagination {
+          bottom: 24px !important;
+          padding: 0 60px !important;
+          z-index: 40 !important;
+        }
+      }
+
+      @media (min-width: 768px) {
+        .swiper-button-next,
+        .swiper-button-prev {
+          width: 44px !important;
+          height: 44px !important;
+          opacity: 0.8;
+        }
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+          font-size: 1.25rem !important;
+        }
       }
 
       .nav-link.active {
@@ -123,47 +234,89 @@
         color: #38bdf8;
         border-bottom: 2px solid #38bdf8;
       }
-    </style>
 
-    <script>
-      if (
-        localStorage.getItem("color-theme") === "dark" ||
-        (!("color-theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
       }
-    </script>
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .thumb-active {
+        border: 2px solid #0ea5e9;
+        opacity: 1 !important;
+        transform: scale(1.05);
+      }
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      @keyframes bubbleUp {
+        0% {
+          transform: translateY(50px) scale(0.5);
+          opacity: 0;
+        }
+        20% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-800px) scale(1.2);
+          opacity: 0;
+        }
+      }
+      .bubble {
+        position: absolute;
+        bottom: -50px;
+        border-radius: 50%;
+        background: radial-gradient(
+          circle at 30% 30%,
+          rgba(255, 255, 255, 0.15),
+          rgba(255, 255, 255, 0.02)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(4px);
+      }
+    </style>
   </head>
 
   <body
     class="bg-gray-50 text-gray-800 dark:bg-dark-bg dark:text-dark-text transition-colors duration-300 font-sans"
   >
     <nav
-      class="sticky top-0 w-full z-40 bg-white/95 dark:bg-dark-bg/95 backdrop-blur-md shadow-md transition-colors duration-300"
+      id="navbar"
+      class="fixed top-0 w-full z-40 transition-all duration-300 animate-fade-in-down"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-20">
-          <div class="flex items-center gap-3">
+        <div
+          class="flex justify-between items-center transition-all duration-300 py-2.5 md:py-3.5"
+          id="navbar-content"
+        >
+          <div class="flex items-center gap-2 sm:gap-3">
             <img
-              src="https://drive.google.com/thumbnail?id=1k5jKAOSHwi24npalrPyOsriBQoPzmAlm&sz=w500"
+              src="https://drive.google.com/thumbnail?id=1OXOVdDqSJ82vxf2NncaSnvWaf5yu-6bJ&sz=w500"
               alt="Logo RSUD"
-              class="h-10 md:h-12 drop-shadow-sm"
+              class="h-8 sm:h-10 md:h-12 transition-all duration-300 drop-shadow-sm"
             />
             <img
-              src="https://drive.google.com/thumbnail?id=1XWEXpYpYe53A6AGuUVy3JbVYncXcVYDx&sz=w500"
+              src="https://drive.google.com/thumbnail?id=1tJ22JBTS6aCnFHZo04SNj325nI_LODjK&sz=w500"
               alt="Logo SIAP"
-              class="h-10 md:h-12 drop-shadow-sm hidden sm:block"
+              class="h-8 sm:h-10 md:h-12 transition-all duration-300 drop-shadow-sm hidden sm:block"
             />
-            <div class="flex flex-col">
+            <div class="flex flex-col justify-center">
               <span
-                class="font-bold text-sm md:text-lg leading-tight text-brand-600 dark:text-brand-500"
-                >Radiologi RSUD</span
+                class="font-bold text-xs sm:text-sm md:text-lg leading-none md:leading-tight text-brand-600 dark:text-brand-500 mb-0.5"
+                >Radiologi</span
               >
-              <span class="text-xs md:text-sm font-semibold opacity-80"
-                >R.T. NOTOPURO</span
+              <span
+                class="text-[10px] sm:text-xs md:text-sm font-semibold opacity-80 leading-none"
+                >RSUD R.T. NOTOPURO</span
               >
             </div>
           </div>
@@ -171,146 +324,188 @@
           <div class="hidden md:flex items-center space-x-8">
             <a
               href="#beranda"
-              class="nav-link active text-gray-600 dark:text-gray-300 hover:text-brand-500 transition py-2"
+              class="nav-link active text-sm lg:text-base text-gray-600 dark:text-gray-300 hover:text-brand-500 transition py-2"
               >Beranda</a
             >
             <a
               href="#tentang"
-              class="nav-link text-gray-600 dark:text-gray-300 hover:text-brand-500 transition py-2"
+              class="nav-link text-sm lg:text-base text-gray-600 dark:text-gray-300 hover:text-brand-500 transition py-2"
               >Tentang</a
             >
             <a
               href="#edukasi"
-              class="nav-link text-gray-600 dark:text-gray-300 hover:text-brand-500 transition py-2"
+              class="nav-link text-sm lg:text-base text-gray-600 dark:text-gray-300 hover:text-brand-500 transition py-2"
               >Edukasi & Panduan</a
             >
-
             <button
-              class="theme-toggle ml-4 p-2 rounded-full w-10 h-10 flex items-center justify-center bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition outline-none"
+              class="theme-toggle ml-2 p-2 rounded-full w-9 h-9 lg:w-10 lg:h-10 flex items-center justify-center bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition outline-none"
             >
-              <i class="fa-solid fa-moon text-gray-700 block dark:hidden"></i>
-              <i class="fa-solid fa-sun text-yellow-400 hidden dark:block"></i>
+              <i
+                class="fa-solid fa-moon text-gray-700 block dark:hidden text-sm"
+              ></i>
+              <i
+                class="fa-solid fa-sun text-yellow-400 hidden dark:block text-sm"
+              ></i>
             </button>
           </div>
 
-          <div class="md:hidden flex items-center gap-4">
+          <div class="md:hidden flex items-center gap-3">
             <button
-              class="theme-toggle p-2 rounded-full w-10 h-10 flex items-center justify-center bg-gray-200 dark:bg-gray-700 transition outline-none"
+              class="theme-toggle p-2 rounded-full w-8 h-8 flex items-center justify-center bg-gray-200 dark:bg-gray-700 transition outline-none"
             >
-              <i class="fa-solid fa-moon text-gray-700 block dark:hidden"></i>
-              <i class="fa-solid fa-sun text-yellow-400 hidden dark:block"></i>
+              <i
+                class="fa-solid fa-moon text-gray-700 block dark:hidden text-xs"
+              ></i>
+              <i
+                class="fa-solid fa-sun text-yellow-400 hidden dark:block text-xs"
+              ></i>
             </button>
             <button
               id="mobile-menu-btn"
-              class="text-gray-600 dark:text-gray-300 text-2xl focus:outline-none"
+              class="text-gray-600 dark:text-gray-300 text-xl focus:outline-none p-1"
             >
               <i class="fa-solid fa-bars"></i>
             </button>
           </div>
         </div>
       </div>
-
       <div
         id="mobile-menu"
-        class="hidden md:hidden bg-white dark:bg-dark-card border-t dark:border-gray-700 absolute w-full shadow-lg z-30"
+        class="md:hidden bg-white dark:bg-dark-card border-t dark:border-gray-700 absolute w-full shadow-lg z-30"
       >
-        <div class="flex flex-col px-4 pt-2 pb-4 space-y-2">
+        <div class="flex flex-col px-4 pt-2 pb-4 space-y-1">
           <a
             href="#beranda"
-            class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-gray-800"
+            class="mobile-link block px-3 py-2.5 rounded-md text-sm sm:text-base font-medium text-brand-600 bg-brand-50 dark:bg-gray-800"
             >Beranda</a
           >
           <a
             href="#tentang"
-            class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+            class="mobile-link block px-3 py-2.5 rounded-md text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
             >Tentang</a
           >
           <a
             href="#edukasi"
-            class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+            class="mobile-link block px-3 py-2.5 rounded-md text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
             >Edukasi & Panduan</a
           >
         </div>
       </div>
     </nav>
 
-    <section id="beranda" class="relative">
-      <div class="swiper mySwiper h-[60vh] md:h-[75vh] w-full">
+    <div class="pt-16 md:pt-20"></div>
+
+    <section id="beranda" class="relative bg-black animate-fade-in-up">
+      <div class="swiper mySwiper h-[55vh] sm:h-[60vh] md:h-[75vh] w-full">
         <div class="swiper-wrapper">
-          <div class="swiper-slide relative">
-            <img
-              src="https://drive.google.com/thumbnail?id=18GdWXxzsL_fERy8Xv1kD_R9zZc_gfONx&sz=w1920"
-              class="w-full h-full object-cover object-center"
-              alt="Banner Utama"
-            />
+          <div class="swiper-slide relative overflow-hidden">
             <div
-              class="absolute inset-0 bg-black bg-opacity-60 dark:bg-opacity-75 flex items-center justify-center"
+              class="absolute inset-0 w-full h-full"
+              data-swiper-parallax="30%"
             >
-              <div class="text-center px-4 max-w-4xl mx-auto z-10 text-white">
-                <h1 class="text-3xl md:text-5xl font-bold mb-4 drop-shadow-lg">
+              <img
+                src="https://drive.google.com/thumbnail?id=1KGKKICF31Q_lMFaxhitbmhHEx33khKyM&sz=w1920"
+                class="w-full h-full object-cover object-center scale-105"
+                alt="Banner Utama"
+              />
+            </div>
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-center justify-center"
+            >
+              <div
+                class="text-center px-6 max-w-4xl mx-auto z-10 text-white"
+                data-swiper-parallax="-300"
+              >
+                <h1
+                  class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 drop-shadow-lg tracking-tight leading-tight"
+                >
                   Portal Edukasi Pasien Radiologi
                 </h1>
-                <p class="text-lg md:text-xl text-gray-200 mb-6 drop-shadow-md">
+                <p
+                  class="text-xs sm:text-base md:text-lg lg:text-xl text-gray-200 mb-6 sm:mb-8 drop-shadow-md font-light max-w-2xl mx-auto"
+                >
                   Layanan informasi dan panduan terpadu seputar persiapan
                   pemeriksaan radiologi.
                 </p>
                 <a
                   href="#edukasi"
-                  class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-500 hover:bg-brand-600 text-white font-semibold transition shadow-lg"
+                  class="inline-flex items-center gap-2 px-6 sm:px-8 py-2.5 sm:py-3.5 rounded-full bg-brand-500 hover:bg-brand-600 text-white text-sm sm:text-base font-semibold transition shadow-[0_0_20px_rgba(14,165,233,0.4)] hover:shadow-[0_0_30px_rgba(14,165,233,0.6)]"
                 >
                   <i class="fa-solid fa-book-medical"></i> Lihat Panduan
                 </a>
               </div>
             </div>
           </div>
-
-          <div class="swiper-slide relative">
-            <img
-              src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=1200"
-              class="w-full h-full object-cover object-center"
-              alt="CT Scan Mesin"
-            />
+          <div class="swiper-slide relative overflow-hidden">
             <div
-              class="absolute inset-0 bg-black bg-opacity-60 dark:bg-opacity-75 flex items-center justify-center"
+              class="absolute inset-0 w-full h-full"
+              data-swiper-parallax="30%"
             >
-              <div class="text-center px-4 max-w-4xl mx-auto z-10 text-white">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4 drop-shadow-lg">
+              <img
+                src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=1200"
+                class="w-full h-full object-cover object-center scale-105"
+                alt="CT Scan"
+              />
+            </div>
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-center justify-center"
+            >
+              <div
+                class="text-center px-6 max-w-4xl mx-auto z-10 text-white"
+                data-swiper-parallax="-300"
+              >
+                <h2
+                  class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 drop-shadow-lg tracking-tight leading-tight"
+                >
                   Fasilitas Modern & Terkini
                 </h2>
-                <p class="text-lg md:text-xl text-gray-200 mb-6 drop-shadow-md">
+                <p
+                  class="text-xs sm:text-base md:text-lg lg:text-xl text-gray-200 mb-6 sm:mb-8 drop-shadow-md font-light max-w-2xl mx-auto"
+                >
                   Didukung oleh peralatan medis berteknologi mutakhir untuk
-                  hasil diagnosa yang cepat dan akurat.
+                  hasil diagnosa akurat.
                 </p>
                 <a
                   href="#edukasi"
-                  class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-500 hover:bg-brand-600 text-white font-semibold transition shadow-lg"
+                  class="inline-flex items-center gap-2 px-6 sm:px-8 py-2.5 sm:py-3.5 rounded-full bg-brand-500 hover:bg-brand-600 text-white text-sm sm:text-base font-semibold transition shadow-[0_0_20px_rgba(14,165,233,0.4)] hover:shadow-[0_0_30px_rgba(14,165,233,0.6)]"
                 >
                   <i class="fa-solid fa-book-medical"></i> Lihat Panduan
                 </a>
               </div>
             </div>
           </div>
-
-          <div class="swiper-slide relative">
-            <img
-              src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&q=80&w=1200"
-              class="w-full h-full object-cover object-center"
-              alt="Dokter Radiologi"
-            />
+          <div class="swiper-slide relative overflow-hidden">
             <div
-              class="absolute inset-0 bg-black bg-opacity-60 dark:bg-opacity-75 flex items-center justify-center"
+              class="absolute inset-0 w-full h-full"
+              data-swiper-parallax="30%"
             >
-              <div class="text-center px-4 max-w-4xl mx-auto z-10 text-white">
-                <h2 class="text-3xl md:text-5xl font-bold mb-4 drop-shadow-lg">
+              <img
+                src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&q=80&w=1200"
+                class="w-full h-full object-cover object-center scale-105"
+                alt="Dokter Radiologi"
+              />
+            </div>
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-center justify-center"
+            >
+              <div
+                class="text-center px-6 max-w-4xl mx-auto z-10 text-white"
+                data-swiper-parallax="-300"
+              >
+                <h2
+                  class="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-3 sm:mb-4 drop-shadow-lg tracking-tight leading-tight"
+                >
                   Ditangani Oleh Tenaga Profesional
                 </h2>
-                <p class="text-lg md:text-xl text-gray-200 mb-6 drop-shadow-md">
+                <p
+                  class="text-xs sm:text-base md:text-lg lg:text-xl text-gray-200 mb-6 sm:mb-8 drop-shadow-md font-light max-w-2xl mx-auto"
+                >
                   Tim dokter spesialis dan radiografer berpengalaman yang siap
                   memberikan pelayanan dengan sepenuh hati.
                 </p>
                 <a
                   href="#edukasi"
-                  class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-brand-500 hover:bg-brand-600 text-white font-semibold transition shadow-lg"
+                  class="inline-flex items-center gap-2 px-6 sm:px-8 py-2.5 sm:py-3.5 rounded-full bg-brand-500 hover:bg-brand-600 text-white text-sm sm:text-base font-semibold transition shadow-[0_0_20px_rgba(14,165,233,0.4)] hover:shadow-[0_0_30px_rgba(14,165,233,0.6)]"
                 >
                   <i class="fa-solid fa-book-medical"></i> Lihat Panduan
                 </a>
@@ -318,63 +513,66 @@
             </div>
           </div>
         </div>
-
-        <div class="swiper-button-next hidden md:flex"></div>
-        <div class="swiper-button-prev hidden md:flex"></div>
+        <div class="swiper-button-next flex"></div>
+        <div class="swiper-button-prev flex"></div>
         <div class="swiper-pagination"></div>
       </div>
     </section>
 
     <section
       id="tentang"
-      class="py-16 md:py-24 bg-white dark:bg-dark-card transition-colors duration-300"
+      class="py-16 sm:py-20 md:py-28 bg-gradient-to-b from-brand-50/50 to-white dark:from-slate-900 dark:to-dark-card transition-colors duration-300 relative overflow-hidden border-b border-gray-100 dark:border-gray-800"
     >
-      <div class="max-w-6xl mx-auto px-4 text-center">
+      <div class="max-w-6xl mx-auto px-5 text-center reveal">
         <h2
-          class="text-3xl md:text-4xl font-bold mb-6 text-brand-600 dark:text-brand-500"
+          class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 text-brand-600 dark:text-brand-500"
         >
-          Tentang RSUD R.T. Notopuro Sidoarjo
+          Tentang RSUD R.T. Notopuro
         </h2>
-        <div class="w-24 h-1 bg-brand-500 mx-auto mb-8 rounded-full"></div>
+        <div
+          class="w-16 sm:w-24 h-1 sm:h-1.5 bg-brand-500 mx-auto mb-6 sm:mb-8 rounded-full"
+        ></div>
         <p
-          class="text-md md:text-lg mb-8 leading-relaxed max-w-4xl mx-auto text-gray-700 dark:text-gray-300"
+          class="text-sm sm:text-base md:text-lg mb-8 sm:mb-10 leading-relaxed max-w-4xl mx-auto text-gray-700 dark:text-gray-300"
         >
           RSUD R.T. Notopuro Sidoarjo adalah Rumah Sakit Umum Daerah kebanggaan
           masyarakat Sidoarjo. Unit Radiologi kami telah terintegrasi dengan
           SIAP (Sistem Informasi Akses Pelayanan Radiologi) untuk memastikan
           setiap pasien mendapatkan edukasi, kenyamanan, serta hasil pemeriksaan
-          berstandar tinggi menggunakan alat-alat canggih.
+          berstandar tinggi.
         </p>
         <a
           href="https://rsudrtnotopuro.sidoarjokab.go.id/"
           target="_blank"
-          class="inline-flex items-center gap-2 px-6 py-3 border-2 border-brand-500 text-brand-600 dark:text-brand-400 font-semibold rounded-full hover:bg-brand-500 hover:text-white transition"
+          class="inline-flex items-center gap-2 px-6 sm:px-8 py-3 border-2 border-brand-500 text-brand-600 dark:text-brand-400 text-sm sm:text-base font-bold rounded-full hover:bg-brand-500 hover:text-white transition-all shadow-sm hover:shadow-lg"
         >
           Website Resmi RSUD
-          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          <i
+            class="fa-solid fa-arrow-up-right-from-square text-xs sm:text-sm"
+          ></i>
         </a>
       </div>
     </section>
 
     <section
       id="edukasi"
-      class="py-16 md:py-24 bg-gray-50 dark:bg-dark-bg transition-colors duration-300"
+      class="py-16 sm:py-20 md:py-28 bg-slate-50 dark:bg-dark-bg transition-colors duration-300"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-10">
+        <div class="text-center mb-8 sm:mb-12 reveal">
           <h2
-            class="text-3xl md:text-4xl font-bold mb-4 text-gray-800 dark:text-white"
+            class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-gray-800 dark:text-white"
           >
             Kumpulan Panduan & Edukasi
           </h2>
-          <p class="text-gray-600 dark:text-gray-400">
+          <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400">
             Temukan dan baca materi panduan radiologi dengan mudah.
           </p>
         </div>
 
-        <div class="max-w-2xl mx-auto mb-12 relative group">
+        <div class="max-w-2xl mx-auto mb-10 sm:mb-14 relative group reveal">
           <div
-            class="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none transition-colors duration-300 group-focus-within:text-brand-500"
+            class="absolute inset-y-0 left-0 pl-4 sm:pl-5 flex items-center pointer-events-none transition-colors duration-300 group-focus-within:text-brand-500"
           >
             <i
               class="fa-solid fa-search text-gray-400 group-focus-within:text-brand-500"
@@ -383,84 +581,42 @@
           <input
             type="text"
             id="searchInput"
-            class="w-full pl-14 pr-12 py-4 rounded-full bg-white dark:bg-dark-card border border-gray-200 dark:border-gray-700 focus:border-brand-500 dark:focus:border-brand-500 focus:ring-4 focus:ring-brand-500/20 shadow-sm hover:shadow-md focus:shadow-lg text-gray-800 dark:text-white outline-none transition-all duration-300 md:text-lg placeholder-gray-400"
-            placeholder="Cari panduan (mis. CT-Scan, USG, Kontras)..."
+            class="w-full pl-11 sm:pl-14 pr-12 py-3 sm:py-4 rounded-full bg-white dark:bg-dark-card border border-gray-200 dark:border-gray-700 focus:border-brand-500 focus:ring-4 focus:ring-brand-500/20 shadow-sm hover:shadow-md text-sm sm:text-base md:text-lg text-gray-800 dark:text-white outline-none transition-all duration-300"
+            placeholder="Cari panduan (mis. CT-Scan)..."
           />
           <button
             id="clearSearchBtn"
-            class="absolute inset-y-0 right-0 pr-5 flex items-center text-gray-400 hover:text-red-500 hidden transition-colors duration-300 outline-none"
+            class="absolute inset-y-0 right-0 pr-4 sm:pr-5 flex items-center text-gray-400 hover:text-red-500 hidden transition-colors duration-300 outline-none"
           >
-            <i class="fa-solid fa-xmark text-xl"></i>
+            <i class="fa-solid fa-xmark text-lg sm:text-xl"></i>
           </button>
         </div>
 
-        <div id="empty-state" class="hidden text-center py-12">
+        <div
+          id="empty-state"
+          class="hidden text-center py-10 sm:py-12 reveal w-full col-span-full"
+        >
           <i
-            class="fa-regular fa-folder-open text-5xl text-gray-300 dark:text-gray-600 mb-4"
+            class="fa-regular fa-folder-open text-4xl sm:text-5xl text-gray-300 dark:text-gray-600 mb-3 sm:mb-4"
           ></i>
-          <p class="text-lg text-gray-500 dark:text-gray-400">
+          <p class="text-sm sm:text-lg text-gray-500 dark:text-gray-400">
             Panduan tidak ditemukan. Silakan coba kata kunci lain.
           </p>
         </div>
 
         <div
           id="content-grid"
-          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 lg:gap-8"
         ></div>
       </div>
     </section>
 
-    <div
-      id="lightbox"
-      class="fixed inset-0 z-[60] hidden bg-black bg-opacity-95 backdrop-blur-sm flex items-center justify-center p-2 md:p-6 transition-opacity"
-    >
-      <div
-        class="relative w-full max-w-5xl h-[85vh] md:h-[90vh] bg-white dark:bg-dark-bg rounded-xl shadow-2xl overflow-hidden flex flex-col"
-      >
-        <div
-          class="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800"
-        >
-          <h3
-            id="lightbox-title"
-            class="font-bold text-lg md:text-xl text-gray-800 dark:text-white truncate pr-4"
-          >
-            Document Viewer
-          </h3>
-          <button
-            onclick="closeLightbox()"
-            class="text-gray-500 hover:text-red-500 transition-colors w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-gray-700 shadow-sm outline-none"
-          >
-            <i class="fa-solid fa-xmark text-xl"></i>
-          </button>
-        </div>
-
-        <div
-          class="flex-1 w-full h-full bg-gray-200 dark:bg-gray-900 flex items-center justify-center relative"
-          id="iframe-container"
-        >
-          <div
-            class="absolute flex flex-col items-center justify-center text-brand-500 z-0"
-          >
-            <i class="fa-solid fa-circle-notch fa-spin text-4xl mb-2"></i>
-            <span class="text-sm font-semibold">Memuat Dokumen...</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <button
-      id="scrollToTopBtn"
-      class="fixed bottom-6 right-6 z-50 p-4 rounded-full bg-brand-500 hover:bg-brand-600 text-white shadow-xl transition-all duration-300 opacity-0 translate-y-10 pointer-events-none outline-none focus:ring-4 focus:ring-brand-300 flex items-center justify-center w-12 h-12"
-    >
-      <i class="fa-solid fa-chevron-up text-xl"></i>
-    </button>
-
     <footer
       id="kontak"
-      class="relative bg-gray-50 dark:bg-dark-bg transition-colors duration-300 pt-10 mt-auto"
+      class="relative bg-slate-50 dark:bg-dark-bg transition-colors duration-300 mt-auto"
     >
       <svg
-        class="waves block w-full"
+        class="waves block w-full relative z-10"
         xmlns="http://www.w3.org/2000/svg"
         xmlns:xlink="http://www.w3.org/1999/xlink"
         viewBox="0 24 150 28"
@@ -473,7 +629,7 @@
             d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
           />
         </defs>
-        <g class="parallax fill-brand-500 dark:fill-brand-600">
+        <g class="parallax fill-brand-600 dark:fill-brand-900">
           <use xlink:href="#gentle-wave" x="48" y="0" />
           <use xlink:href="#gentle-wave" x="48" y="3" />
           <use xlink:href="#gentle-wave" x="48" y="5" />
@@ -481,42 +637,209 @@
             xlink:href="#gentle-wave"
             x="48"
             y="7"
-            class="opacity-100 fill-brand-600 dark:fill-brand-900"
+            class="opacity-100 fill-brand-700 dark:fill-brand-950"
           />
         </g>
       </svg>
 
       <div
-        class="bg-brand-600 dark:bg-brand-900 text-white text-center py-6 px-4"
+        class="bg-brand-600 dark:bg-brand-900 text-white py-10 sm:py-12 px-5 relative z-10 overflow-hidden"
       >
         <div
-          class="max-w-4xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4"
+          class="absolute inset-0 pointer-events-none z-0"
+          id="bubbles-container"
         >
-          <p class="font-semibold text-sm md:text-base">
-            &copy; 2026 RSUD R.T. NOTOPURO SIDOARJO
-          </p>
-          <p class="text-sm opacity-90">
-            Unit Radiologi - Melayani dengan Sepenuh Hati
-          </p>
+          <div
+            class="bubble w-12 h-12 sm:w-16 sm:h-16 left-[10%] animate-[bubbleUp_10s_linear_infinite] [animation-delay:0s]"
+          ></div>
+          <div
+            class="bubble w-16 h-16 sm:w-24 sm:h-24 left-[30%] animate-[bubbleUp_15s_linear_infinite] [animation-delay:2s]"
+          ></div>
+          <div
+            class="bubble w-8 h-8 sm:w-12 sm:h-12 left-[50%] animate-[bubbleUp_12s_linear_infinite] [animation-delay:4s]"
+          ></div>
+          <div
+            class="bubble w-20 h-20 sm:w-32 sm:h-32 left-[70%] animate-[bubbleUp_18s_linear_infinite] [animation-delay:1s]"
+          ></div>
+          <div
+            class="bubble w-14 h-14 sm:w-20 sm:h-20 left-[85%] animate-[bubbleUp_14s_linear_infinite] [animation-delay:3s]"
+          ></div>
+        </div>
+
+        <div
+          class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center relative z-10"
+        >
+          <div class="space-y-5 sm:space-y-6 reveal">
+            <div>
+              <h3 class="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">
+                Hubungi Kami
+              </h3>
+              <p class="text-sm sm:text-base text-brand-100 opacity-90">
+                Layanan Radiologi RSUD R.T. Notopuro Sidoarjo
+              </p>
+            </div>
+
+            <ul
+              class="space-y-4 sm:space-y-5 text-brand-50 mt-4 sm:mt-6 text-sm sm:text-base"
+            >
+              <li class="flex items-start gap-3 sm:gap-4">
+                <div
+                  class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0"
+                >
+                  <i class="fa-solid fa-location-dot text-base sm:text-xl"></i>
+                </div>
+                <p class="pt-1.5 sm:pt-2 leading-relaxed">
+                  Jl. Mojopahit No.667, Sidowayah, Celep, Kec. Sidoarjo,
+                  Kabupaten Sidoarjo, Jawa Timur 61215
+                </p>
+              </li>
+              <li class="flex items-center gap-3 sm:gap-4">
+                <div
+                  class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0"
+                >
+                  <i class="fa-brands fa-whatsapp text-base sm:text-xl"></i>
+                </div>
+                <a
+                  href="https://wa.me/6287711309994"
+                  target="_blank"
+                  class="pt-1 hover:text-brand-200 transition"
+                  >+62 877-1130-9994</a
+                >
+              </li>
+              <li class="flex items-center gap-3 sm:gap-4">
+                <div
+                  class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0"
+                >
+                  <i class="fa-solid fa-envelope text-sm sm:text-lg"></i>
+                </div>
+                <a
+                  href="mailto:radiologirsudrtnsidoarjo@gmail.com"
+                  class="pt-1 hover:text-brand-200 transition break-all"
+                  >radiologirsudrtnsidoarjo@gmail.com</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="h-[250px] sm:h-[300px] w-full rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10 reveal"
+          >
+            <iframe
+              src="https://maps.google.com/maps?q=Jl.%20Mojopahit%20No.667,%20Sidowayah,%20Celep,%20Kec.%20Sidoarjo,%20Kabupaten%20Sidoarjo,%20Jawa%20Timur%2061215&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="100%"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+
+        <div
+          class="max-w-7xl mx-auto mt-10 sm:mt-12 pt-5 sm:pt-6 border-t border-white/20 flex flex-col md:flex-row justify-between items-center gap-2 sm:gap-4 text-xs sm:text-sm opacity-80 text-center md:text-left relative z-10"
+        >
+          <p>&copy; 2026 RSUD R.T. NOTOPURO SIDOARJO</p>
+          <p>Unit Radiologi - Melayani dengan Sepenuh Hati</p>
         </div>
       </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <div
+      id="lightbox"
+      class="fixed inset-0 z-[60] hidden bg-black/95 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 transition-opacity opacity-0 duration-300"
+    >
+      <div
+        class="relative w-full max-w-5xl h-[92vh] sm:h-[90vh] bg-white dark:bg-dark-card rounded-xl sm:rounded-2xl shadow-2xl overflow-hidden flex flex-col transform scale-95 transition-transform duration-300"
+        id="lightbox-modal"
+      >
+        <div
+          class="relative flex flex-col p-4 sm:px-6 sm:py-4 border-b border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-900 shrink-0"
+        >
+          <div class="pr-12 sm:pr-14 w-full">
+            <div class="flex flex-wrap items-center gap-2 mb-1.5 sm:mb-1">
+              <span
+                id="lightbox-counter"
+                class="text-[10px] sm:text-xs font-bold bg-brand-500 text-white px-2 py-0.5 rounded shadow-sm whitespace-nowrap"
+                >1 / 15</span
+              >
+              <h3
+                id="lightbox-title"
+                class="font-bold text-sm sm:text-lg md:text-xl text-gray-800 dark:text-white leading-snug"
+              >
+                Document Viewer
+              </h3>
+            </div>
+            <p
+              id="lightbox-desc"
+              class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 line-clamp-2 leading-relaxed"
+            >
+              Deskripsi postingan akan tampil di sini...
+            </p>
+          </div>
 
+          <button
+            onclick="closeLightbox()"
+            class="absolute top-4 right-3 sm:right-4 text-gray-500 hover:text-red-500 transition-colors w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full bg-white dark:bg-gray-800 shadow-sm border dark:border-gray-700 outline-none shrink-0"
+          >
+            <i class="fa-solid fa-xmark text-lg sm:text-xl"></i>
+          </button>
+        </div>
+
+        <div
+          class="flex-1 w-full relative bg-gray-200 dark:bg-gray-800 flex items-center justify-center group"
+          id="iframe-container"
+        >
+          <div
+            class="absolute flex flex-col items-center justify-center text-brand-500 z-0"
+          >
+            <i
+              class="fa-solid fa-circle-notch fa-spin text-3xl sm:text-4xl mb-2"
+            ></i>
+            <span class="text-xs sm:text-sm font-semibold"
+              >Memuat Dokumen...</span
+            >
+          </div>
+          <button
+            onclick="navigatePost(-1)"
+            class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-white text-brand-600 shadow-lg z-20 flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 hover:scale-110 disabled:opacity-0 disabled:pointer-events-none"
+            id="btn-prev"
+          >
+            <i class="fa-solid fa-chevron-left text-lg sm:text-xl"></i>
+          </button>
+          <button
+            onclick="navigatePost(1)"
+            class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 hover:bg-white text-brand-600 shadow-lg z-20 flex items-center justify-center transition-all opacity-0 group-hover:opacity-100 hover:scale-110 disabled:opacity-0 disabled:pointer-events-none"
+            id="btn-next"
+          >
+            <i class="fa-solid fa-chevron-right text-lg sm:text-xl"></i>
+          </button>
+        </div>
+
+        <div
+          class="h-20 sm:h-24 md:h-28 bg-gray-100 dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800 shrink-0 flex items-center px-3 sm:px-4 overflow-x-auto hide-scrollbar gap-2.5 sm:gap-3 scroll-smooth"
+          id="lightbox-thumbnails"
+        ></div>
+      </div>
+    </div>
+
+    <button
+      id="scrollToTopBtn"
+      class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 p-3 sm:p-4 rounded-full bg-brand-500 hover:bg-brand-600 text-white shadow-xl transition-all duration-300 opacity-0 translate-y-10 pointer-events-none outline-none focus:ring-4 focus:ring-brand-300 flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12"
+    >
+      <i class="fa-solid fa-chevron-up text-lg sm:text-xl"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
       var swiper = new Swiper(".mySwiper", {
+        parallax: true,
+        speed: 800,
         spaceBetween: 0,
         centeredSlides: true,
         loop: true,
-        autoplay: {
-          delay: 5000,
-          disableOnInteraction: false,
-        },
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-        },
+        autoplay: { delay: 6000, disableOnInteraction: false },
+        pagination: { el: ".swiper-pagination", clickable: true },
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
@@ -525,123 +848,139 @@
 
       const postsData = [
         {
-          id: "1iy47XianYBBhjQeMmGcwTs3rk8mNd9Ut",
+          id: "1uDv4o9HPD6Yfkz361T2BW_twLiUUmqHG",
+          title: "Radiologi RSUD R.T. NOTOPURO SIDOARJO",
+          description: "",
+        },
+        {
+          id: "1pBx8LlM6SR7dLAJBGhMIxYK5UPYiR9zr",
+          title: "Layanan Radiologi Unggulan (Akurat, Cepat, Profesional)",
+          description: "",
+        },
+        {
+          id: "1A8fU7EJTc_iBrpc-fvyRzvrjUVlS-X7j",
           title:
             "Alur Radiologi SIAP (Sistem Informasi Akses Pelayanan Radiologi)",
+          description: "",
         },
         {
-          id: "19UYnZLN3RSlXB7GP1qt-JXuLXbjCU9iM",
-          title: "Tarif Layanan CT-Scan 128 Slices",
-        },
-        {
-          id: "11_T_239RM_0n87W4M4zSN7gzqcZmBrhv",
+          id: "1j0PLEp37d5lGKH6Xo70byeKRDO2Sqm__",
           title: "Panduan Persiapan Pemeriksaan MSCT Calcium Scoring",
+          description: "",
         },
         {
-          id: "1wbbO7mT1dHxDIiIy5rwnHEFYt7rW-4CG",
+          id: "1AKyoFisXPwP-s4EUMs4BvKYyFk39JBAG",
           title: "Panduan Persiapan USG Upper & Lower Abdomen",
+          description: "",
         },
         {
-          id: "12Fy2j_TOLuQo7zouh8piwFg9VgMIbzI6",
+          id: "1gAkjALFZaLk0eA8j__zoOFPfkVilSrFr",
           title: "Persiapan Pemeriksaan USG (Lower, Kandungan, Urologi)",
+          description: "",
         },
         {
-          id: "13Rs4_uHXkDWdoNx595P37YCNJjsu4qee",
+          id: "1dTBboVDOKWLN9UDtSx3UzzY4HDSj5M0-",
           title: "Panduan Persiapan CT-Scan Abdomen Non Kontras / Stonografi",
+          description: "",
         },
         {
-          id: "1fhUQECtXcf0Wm3pr9aOeeGoWDemnOBzH",
+          id: "1eTm5u9Ot58idsSgL8rJssW5OFDkyvntS",
           title: "Panduan Persiapan MSCT Angiografi",
+          description: "",
         },
         {
-          id: "1LeP_PvlafXfMEHkLPnJ3aWW8oZ6I920V",
+          id: "1Aec_mXwCEPwrGMGRK71GBwZlWi8fBPJN",
           title: "Memahami CT-Scan Angiografi (CTA)",
+          description: "",
         },
         {
-          id: "190UGUTex_cb8emVJMK19p53d0w4cXdq7",
+          id: "1EZVHzYM_COg5J6JyOufPOo1eOjwLDejh",
           title: "Panduan Persiapan USG",
+          description: "",
         },
         {
-          id: "1DBxMqsNLE0zZDyCSCdxOMwE64q--NL-w",
-          title: "Layanan Radiologi Unggulan (Akurat, Cepat, Profesional)",
-        },
-        {
-          id: "1ztaBFChLFxk9GNLG-zpcTLTebMjpqGRw",
+          id: "1zBctoYsNvSNJitfUSfhKiLThonraMLlz",
           title: "Panduan Persiapan Pemeriksaan (Umum)",
+          description: "",
         },
         {
-          id: "12tp_tT0CyP4kxUBJ05RApBCnkfMysSq8",
+          id: "1reRZ9iWWNA4Qvw_6OA2ReHRnwimsDjyr",
           title: "Panduan Persiapan USG Abdomen Upper (Bagian Atas)",
+          description: "",
         },
         {
-          id: "1ASxNX3hnVd3ZGaE4S0msYqFyXoyGaXv2",
+          id: "1l7sPoW21ns5l_Mj5gzP9G_Vs7VtMjR84",
           title: "Persiapan Pemeriksaan MSCT Abdomen Dengan Kontras",
+          description: "",
         },
         {
-          id: "1NPXaUtf5uTEJO1xrTHjY8YzvU-TWxCXa",
+          id: "1iONNlY1DRqFBjNWP1KsE8sfG6clR5Dcp",
           title: "Tarif Layanan CT-Scan 16 dan 64 Slices",
+          description:
+            "Tarif layanan pemeriksaan CT-Scan 16 dan 64 Slices ini mengacu pada PERDA Kabupaten Sidoarjo Nomor 4 Tahun 2025.",
         },
         {
-          id: "1GIk8EoFik5zQAt5kbeUPd036LJEzf1Kc",
-          title: "Radiologi RSUD R.T. NOTOPURO SIDOARJO",
+          id: "1SsySBdOv0flO1mz1XWTgqHBMa3lP9_gv",
+          title: "Tarif Layanan CT-Scan 128 Slices",
+          description:
+            "Tarif layanan pemeriksaan CT-Scan 128 Slices ini mengacu pada PERDA Kabupaten Sidoarjo Nomor 4 Tahun 2025.",
+        },
+        {
+          id: "1spYAdW_j1oTSKPV8Dz655cDa_yR_7ykJ",
+          title: "Tarif Layanan MRI 3 Tesla",
+          description:
+            "Tarif layanan pemeriksaan MRI 3 TESLA ini mengacu pada PERDA Kabupaten Sidoarjo Nomor 4 Tahun 2025.",
         },
       ];
 
+      let visiblePosts = [...postsData];
+      let currentLightboxIndex = 0;
       const gridContainer = document.getElementById("content-grid");
 
-      postsData.forEach((post) => {
-        const imgUrl = `https://drive.google.com/thumbnail?id=${post.id}&sz=w1000`;
-
-        const card = document.createElement("div");
-        card.className =
-          "post-card bg-white dark:bg-dark-card rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 dark:border-gray-800 overflow-hidden cursor-pointer transform hover:-translate-y-2 transition-all duration-300 flex flex-col group";
-        card.setAttribute("data-title", post.title);
-        card.onclick = () => openLightbox(post.id, post.title);
-
-        card.innerHTML = `
-                <div class="h-60 overflow-hidden relative bg-gray-100 dark:bg-gray-800">
-                    <img src="${imgUrl}" alt="${post.title}" class="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-110" loading="lazy">
-                    <div class="absolute inset-0 bg-brand-900 bg-opacity-0 group-hover:bg-opacity-30 transition-all flex items-center justify-center">
-                        <div class="bg-white text-brand-600 rounded-full w-12 h-12 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity transform scale-50 group-hover:scale-100 duration-300 shadow-lg">
-                            <i class="fa-solid fa-expand text-xl"></i>
-                        </div>
+      function renderGrid(dataToRender) {
+        gridContainer.innerHTML = "";
+        dataToRender.forEach((post, index) => {
+          const imgUrl = `https://drive.google.com/thumbnail?id=${post.id}&sz=w1000`;
+          const card = document.createElement("div");
+          card.className =
+            "post-card reveal bg-white dark:bg-dark-card rounded-2xl shadow-sm hover:shadow-xl border border-gray-100 dark:border-gray-800 overflow-hidden cursor-pointer transform hover:-translate-y-1.5 transition-all duration-300 flex flex-col group";
+          card.onclick = () => openLightbox(index);
+          card.innerHTML = `
+            <div class="h-48 sm:h-56 lg:h-60 overflow-hidden relative bg-gray-100 dark:bg-gray-800">
+                <img src="${imgUrl}" alt="${post.title}" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110" loading="lazy">
+                <div class="absolute inset-0 bg-brand-900 bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                    <div class="bg-white text-brand-600 rounded-full w-12 h-12 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all transform scale-50 group-hover:scale-100 duration-300 shadow-lg">
+                        <i class="fa-solid fa-expand text-xl"></i>
                     </div>
                 </div>
-                <div class="p-5 flex-1 flex flex-col justify-center bg-white dark:bg-dark-card border-t border-gray-50 dark:border-gray-700">
-                    <h3 class="font-semibold text-gray-800 dark:text-gray-100 line-clamp-2 leading-snug group-hover:text-brand-500 transition-colors">${post.title}</h3>
-                </div>
-            `;
-        gridContainer.appendChild(card);
-      });
+            </div>
+            <div class="p-4 sm:p-5 flex-1 flex flex-col justify-center bg-white dark:bg-dark-card border-t border-gray-50 dark:border-gray-800">
+                <h3 class="font-bold text-sm sm:text-base text-gray-800 dark:text-gray-100 line-clamp-2 leading-snug group-hover:text-brand-500 transition-colors">${post.title}</h3>
+            </div>
+          `;
+          gridContainer.appendChild(card);
+        });
+        setTimeout(initScrollReveal, 100);
+      }
+      renderGrid(visiblePosts);
 
       const searchInput = document.getElementById("searchInput");
       const clearSearchBtn = document.getElementById("clearSearchBtn");
       const emptyState = document.getElementById("empty-state");
-      const postCards = document.querySelectorAll(".post-card");
 
       searchInput.addEventListener("input", function (e) {
         const searchTerm = e.target.value.toLowerCase();
-        let hasVisibleCards = false;
+        if (searchTerm.length > 0) clearSearchBtn.classList.remove("hidden");
+        else clearSearchBtn.classList.add("hidden");
 
-        if (searchTerm.length > 0) {
-          clearSearchBtn.classList.remove("hidden");
-        } else {
-          clearSearchBtn.classList.add("hidden");
-        }
-
-        postCards.forEach((card) => {
-          const title = card.getAttribute("data-title").toLowerCase();
-          if (title.includes(searchTerm)) {
-            card.style.display = "flex";
-            hasVisibleCards = true;
-          } else {
-            card.style.display = "none";
-          }
-        });
-
-        if (hasVisibleCards) {
+        visiblePosts = postsData.filter((post) =>
+          post.title.toLowerCase().includes(searchTerm),
+        );
+        if (visiblePosts.length > 0) {
           emptyState.classList.add("hidden");
+          renderGrid(visiblePosts);
         } else {
+          gridContainer.innerHTML = "";
           emptyState.classList.remove("hidden");
         }
       });
@@ -653,34 +992,105 @@
       });
 
       const lightbox = document.getElementById("lightbox");
+      const lightboxModal = document.getElementById("lightbox-modal");
       const lightboxTitle = document.getElementById("lightbox-title");
+      const lightboxDesc = document.getElementById("lightbox-desc");
+      const lightboxCounter = document.getElementById("lightbox-counter");
       const iframeContainer = document.getElementById("iframe-container");
+      const btnPrev = document.getElementById("btn-prev");
+      const btnNext = document.getElementById("btn-next");
+      const thumbnailTrack = document.getElementById("lightbox-thumbnails");
 
-      function openLightbox(fileId, title) {
+      function openLightbox(index) {
+        currentLightboxIndex = index;
+        const post = visiblePosts[index];
+
         document.body.style.overflow = "hidden";
-        lightboxTitle.innerText = title;
+        lightbox.classList.remove("hidden");
 
-        const previewUrl = `https://drive.google.com/file/d/${fileId}/preview`;
+        lightboxTitle.innerText = post.title;
+        lightboxDesc.innerText = post.description;
+        lightboxCounter.innerText = `${index + 1} / ${visiblePosts.length}`;
+
+        btnPrev.disabled = index === 0;
+        btnNext.disabled = index === visiblePosts.length - 1;
+
+        const previewUrl = `https://drive.google.com/file/d/${post.id}/preview`;
         const iframeHTML = `<iframe src="${previewUrl}" class="absolute inset-0 w-full h-full z-10" allow="autoplay"></iframe>`;
 
         const existingIframe = iframeContainer.querySelector("iframe");
         if (existingIframe) existingIframe.remove();
         iframeContainer.insertAdjacentHTML("beforeend", iframeHTML);
 
-        lightbox.classList.remove("hidden");
+        generateThumbnails();
+
+        setTimeout(() => {
+          lightbox.classList.remove("opacity-0");
+          lightboxModal.classList.remove("scale-95");
+        }, 10);
+      }
+
+      function navigatePost(step) {
+        const newIndex = currentLightboxIndex + step;
+        if (newIndex >= 0 && newIndex < visiblePosts.length)
+          openLightbox(newIndex);
+      }
+
+      function generateThumbnails() {
+        thumbnailTrack.innerHTML = "";
+        visiblePosts.forEach((post, idx) => {
+          const thumbUrl = `https://drive.google.com/thumbnail?id=${post.id}&sz=w200`;
+          const thumbEl = document.createElement("div");
+          const isActive = idx === currentLightboxIndex;
+
+          thumbEl.className = `w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 shrink-0 rounded-md sm:rounded-lg overflow-hidden cursor-pointer transition-all duration-300 opacity-60 hover:opacity-100 ${isActive ? "thumb-active shadow-md" : ""}`;
+          thumbEl.onclick = () => openLightbox(idx);
+          thumbEl.innerHTML = `<img src="${thumbUrl}" class="w-full h-full object-cover">`;
+
+          thumbnailTrack.appendChild(thumbEl);
+          if (isActive) {
+            setTimeout(() => {
+              thumbEl.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+                inline: "center",
+              });
+            }, 50);
+          }
+        });
       }
 
       function closeLightbox() {
         document.body.style.overflow = "";
-        lightbox.classList.add("hidden");
-        const existingIframe = iframeContainer.querySelector("iframe");
-        if (existingIframe) existingIframe.remove();
+        lightbox.classList.add("opacity-0");
+        lightboxModal.classList.add("scale-95");
+
+        setTimeout(() => {
+          lightbox.classList.add("hidden");
+          const existingIframe = iframeContainer.querySelector("iframe");
+          if (existingIframe) existingIframe.remove();
+        }, 300);
       }
 
       lightbox.addEventListener("click", (e) => {
         if (e.target === lightbox) closeLightbox();
       });
 
+      function initScrollReveal() {
+        const reveals = document.querySelectorAll(".reveal");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) entry.target.classList.add("active");
+            });
+          },
+          { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+        );
+        reveals.forEach((el) => observer.observe(el));
+      }
+      document.addEventListener("DOMContentLoaded", initScrollReveal);
+
+      const nav = document.getElementById("navbar");
       const sections = document.querySelectorAll("section");
       const navLinks = document.querySelectorAll(".nav-link");
       const mobileLinks = document.querySelectorAll(".mobile-link");
@@ -689,6 +1099,12 @@
       window.addEventListener("scroll", () => {
         let current = "";
         const scrollY = window.pageYOffset;
+
+        if (scrollY > 20) {
+          nav.classList.add("nav-scrolled");
+        } else {
+          nav.classList.remove("nav-scrolled");
+        }
 
         if (scrollY > 300) {
           scrollTopBtn.classList.remove(
@@ -715,25 +1131,21 @@
         }
 
         sections.forEach((section) => {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.clientHeight;
-          if (scrollY >= sectionTop - 150) {
+          if (scrollY >= section.offsetTop - 150)
             current = section.getAttribute("id");
-          }
         });
 
         navLinks.forEach((a) => {
           a.classList.remove("active");
-          if (a.getAttribute("href") === `#${current}`) {
+          if (a.getAttribute("href") === `#${current}`)
             a.classList.add("active");
-          }
         });
 
         mobileLinks.forEach((a) => {
           a.classList.remove(
             "text-brand-600",
-            "dark:text-brand-400",
             "bg-brand-50",
+            "dark:text-brand-400",
             "dark:bg-gray-800",
           );
           a.classList.add("text-gray-700", "dark:text-gray-300");
@@ -741,8 +1153,8 @@
             a.classList.remove("text-gray-700", "dark:text-gray-300");
             a.classList.add(
               "text-brand-600",
-              "dark:text-brand-400",
               "bg-brand-50",
+              "dark:text-brand-400",
               "dark:bg-gray-800",
             );
           }
@@ -750,25 +1162,80 @@
       });
 
       scrollTopBtn.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        const targetPosition = 0;
+        const startPosition = window.pageYOffset;
+        const distance = targetPosition - startPosition;
+        let startTime = null;
+
+        function animation(currentTime) {
+          if (startTime === null) startTime = currentTime;
+          const timeElapsed = currentTime - startTime;
+          const run = ease(timeElapsed, startPosition, distance, 800);
+          window.scrollTo(0, run);
+          if (timeElapsed < 800) requestAnimationFrame(animation);
+        }
+
+        function ease(t, b, c, d) {
+          t /= d / 2;
+          if (t < 1) return (c / 2) * t * t + b;
+          t--;
+          return (-c / 2) * (t * (t - 2) - 1) + b;
+        }
+
+        requestAnimationFrame(animation);
       });
 
       const mobileMenuBtn = document.getElementById("mobile-menu-btn");
       const mobileMenu = document.getElementById("mobile-menu");
 
       mobileMenuBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
+        mobileMenu.classList.toggle("mobile-menu-open");
       });
 
-      mobileLinks.forEach((link) => {
-        link.addEventListener("click", () => {
-          mobileMenu.classList.add("hidden");
+      mobileLinks.forEach((link) =>
+        link.addEventListener("click", () =>
+          mobileMenu.classList.remove("mobile-menu-open"),
+        ),
+      );
+
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            e.preventDefault();
+            const navHeight = nav.offsetHeight;
+            const targetPosition =
+              targetElement.getBoundingClientRect().top +
+              window.pageYOffset -
+              navHeight;
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            let startTime = null;
+
+            function animation(currentTime) {
+              if (startTime === null) startTime = currentTime;
+              const timeElapsed = currentTime - startTime;
+              const run = ease(timeElapsed, startPosition, distance, 800);
+              window.scrollTo(0, run);
+              if (timeElapsed < 800) requestAnimationFrame(animation);
+            }
+
+            function ease(t, b, c, d) {
+              t /= d / 2;
+              if (t < 1) return (c / 2) * t * t + b;
+              t--;
+              return (-c / 2) * (t * (t - 2) - 1) + b;
+            }
+
+            requestAnimationFrame(animation);
+          }
         });
       });
 
       function toggleTheme() {
-        const isDark = document.documentElement.classList.contains("dark");
-        if (isDark) {
+        if (document.documentElement.classList.contains("dark")) {
           document.documentElement.classList.remove("dark");
           localStorage.setItem("color-theme", "light");
         } else {
@@ -776,11 +1243,9 @@
           localStorage.setItem("color-theme", "dark");
         }
       }
-
-      const themeToggles = document.querySelectorAll(".theme-toggle");
-      themeToggles.forEach((btn) => {
-        btn.addEventListener("click", toggleTheme);
-      });
+      document
+        .querySelectorAll(".theme-toggle")
+        .forEach((btn) => btn.addEventListener("click", toggleTheme));
     </script>
   </body>
 </html>
