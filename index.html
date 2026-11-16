@@ -107,7 +107,7 @@
           opacity 0.3s ease-in-out;
       }
       #mobile-menu.mobile-menu-open {
-        max-height: 300px;
+        max-height: 380px;
         opacity: 1;
       }
 
@@ -298,16 +298,11 @@
           class="flex justify-between items-center transition-all duration-300 py-2.5 md:py-3.5"
           id="navbar-content"
         >
-          <div class="flex items-center gap-2 sm:gap-3">
+          <div class="flex items-center gap-2 sm:gap-3 shrink-0">
             <img
               src="https://drive.google.com/thumbnail?id=1OXOVdDqSJ82vxf2NncaSnvWaf5yu-6bJ&sz=w500"
               alt="Logo RSUD"
               class="h-8 sm:h-10 md:h-12 transition-all duration-300 drop-shadow-sm"
-            />
-            <img
-              src="https://drive.google.com/thumbnail?id=1tJ22JBTS6aCnFHZo04SNj325nI_LODjK&sz=w500"
-              alt="Logo SIAP"
-              class="h-8 sm:h-10 md:h-12 transition-all duration-300 drop-shadow-sm hidden sm:block"
             />
             <div class="flex flex-col justify-center">
               <span
@@ -321,24 +316,37 @@
             </div>
           </div>
 
-          <div class="hidden md:flex items-center space-x-8">
+          <div class="hidden md:flex items-center space-x-4 lg:space-x-7">
             <a
               href="#beranda"
-              class="nav-link active text-sm lg:text-base text-gray-600 dark:text-gray-300 hover:text-brand-500 transition py-2"
+              class="nav-link active whitespace-nowrap text-xs lg:text-base text-gray-600 dark:text-gray-300 hover:text-brand-500 transition py-2"
               >Beranda</a
             >
             <a
               href="#tentang"
-              class="nav-link text-sm lg:text-base text-gray-600 dark:text-gray-300 hover:text-brand-500 transition py-2"
+              class="nav-link whitespace-nowrap text-xs lg:text-base text-gray-600 dark:text-gray-300 hover:text-brand-500 transition py-2"
               >Tentang</a
             >
             <a
               href="#edukasi"
-              class="nav-link text-sm lg:text-base text-gray-600 dark:text-gray-300 hover:text-brand-500 transition py-2"
-              >Edukasi & Panduan</a
+              data-nav-category="layanan-unggulan"
+              class="nav-link whitespace-nowrap text-xs lg:text-base text-gray-600 dark:text-gray-300 hover:text-brand-500 transition py-2"
+              >Layanan Unggulan</a
+            >
+            <a
+              href="#edukasi"
+              data-nav-category="persiapan-pemeriksaan"
+              class="nav-link whitespace-nowrap text-xs lg:text-base text-gray-600 dark:text-gray-300 hover:text-brand-500 transition py-2"
+              >Persiapan Pemeriksaan</a
+            >
+            <a
+              href="#edukasi"
+              data-nav-category="tarif-layanan"
+              class="nav-link whitespace-nowrap text-xs lg:text-base text-gray-600 dark:text-gray-300 hover:text-brand-500 transition py-2"
+              >Tarif Layanan</a
             >
             <button
-              class="theme-toggle ml-2 p-2 rounded-full w-9 h-9 lg:w-10 lg:h-10 flex items-center justify-center bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition outline-none"
+              class="theme-toggle ml-1 p-2 rounded-full w-9 h-9 lg:w-10 lg:h-10 flex items-center justify-center bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition outline-none shrink-0"
             >
               <i
                 class="fa-solid fa-moon text-gray-700 block dark:hidden text-sm"
@@ -386,8 +394,21 @@
           >
           <a
             href="#edukasi"
+            data-nav-category="layanan-unggulan"
             class="mobile-link block px-3 py-2.5 rounded-md text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
-            >Edukasi & Panduan</a
+            >Layanan Unggulan</a
+          >
+          <a
+            href="#edukasi"
+            data-nav-category="persiapan-pemeriksaan"
+            class="mobile-link block px-3 py-2.5 rounded-md text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+            >Persiapan Pemeriksaan</a
+          >
+          <a
+            href="#edukasi"
+            data-nav-category="tarif-layanan"
+            class="mobile-link block px-3 py-2.5 rounded-md text-sm sm:text-base font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+            >Tarif Layanan</a
           >
         </div>
       </div>
@@ -405,7 +426,7 @@
             >
               <img
                 src="https://drive.google.com/thumbnail?id=1KGKKICF31Q_lMFaxhitbmhHEx33khKyM&sz=w1920"
-                class="w-full h-full object-cover object-center scale-105"
+                class="w-full h-full object-cover object-center scale-110 blur-[4px]"
                 alt="Banner Utama"
               />
             </div>
@@ -442,8 +463,8 @@
               data-swiper-parallax="30%"
             >
               <img
-                src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=1200"
-                class="w-full h-full object-cover object-center scale-105"
+                src="https://drive.google.com/thumbnail?id=15OzbBrzfdugz8I5DTxsEJdQ9SAC4ndfw&sz=w1920"
+                class="w-full h-full object-cover object-center scale-110 blur-[4px]"
                 alt="CT Scan"
               />
             </div>
@@ -480,8 +501,8 @@
               data-swiper-parallax="30%"
             >
               <img
-                src="https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&q=80&w=1200"
-                class="w-full h-full object-cover object-center scale-105"
+                src="https://drive.google.com/thumbnail?id=1is6z0WEH7P1olbCQ61yn2h5NDbx9t3gG&sz=w1920"
+                class="w-full h-full object-cover object-center scale-110 blur-[4px]"
                 alt="Dokter Radiologi"
               />
             </div>
@@ -559,7 +580,7 @@
       class="py-16 sm:py-20 md:py-28 bg-slate-50 dark:bg-dark-bg transition-colors duration-300"
     >
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-8 sm:mb-12 reveal">
+        <div class="text-center mb-8 sm:mb-10 reveal">
           <h2
             class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4 text-gray-800 dark:text-white"
           >
@@ -570,7 +591,7 @@
           </p>
         </div>
 
-        <div class="max-w-2xl mx-auto mb-10 sm:mb-14 relative group reveal">
+        <div class="max-w-2xl mx-auto mb-6 sm:mb-8 relative group reveal">
           <div
             class="absolute inset-y-0 left-0 pl-4 sm:pl-5 flex items-center pointer-events-none transition-colors duration-300 group-focus-within:text-brand-500"
           >
@@ -593,6 +614,44 @@
         </div>
 
         <div
+          id="category-filters"
+          class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10 sm:mb-14 reveal"
+        >
+          <button
+            type="button"
+            data-category="all"
+            class="category-btn inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold border transition-all duration-300 bg-brand-500 text-white border-brand-500 shadow-md shadow-brand-500/25 outline-none"
+          >
+            <i class="fa-solid fa-layer-group"></i>
+            <span>Semua</span>
+          </button>
+          <button
+            type="button"
+            data-category="layanan-unggulan"
+            class="category-btn inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold border transition-all duration-300 bg-white dark:bg-dark-card text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-brand-500 hover:text-brand-600 dark:hover:text-brand-400 shadow-sm outline-none"
+          >
+            <i class="fa-solid fa-star"></i>
+            <span>Layanan Unggulan</span>
+          </button>
+          <button
+            type="button"
+            data-category="persiapan-pemeriksaan"
+            class="category-btn inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold border transition-all duration-300 bg-white dark:bg-dark-card text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-brand-500 hover:text-brand-600 dark:hover:text-brand-400 shadow-sm outline-none"
+          >
+            <i class="fa-solid fa-clipboard-check"></i>
+            <span>Persiapan Pemeriksaan</span>
+          </button>
+          <button
+            type="button"
+            data-category="tarif-layanan"
+            class="category-btn inline-flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold border transition-all duration-300 bg-white dark:bg-dark-card text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-brand-500 hover:text-brand-600 dark:hover:text-brand-400 shadow-sm outline-none"
+          >
+            <i class="fa-solid fa-tags"></i>
+            <span>Tarif Layanan</span>
+          </button>
+        </div>
+
+        <div
           id="empty-state"
           class="hidden text-center py-10 sm:py-12 reveal w-full col-span-full"
         >
@@ -600,7 +659,7 @@
             class="fa-regular fa-folder-open text-4xl sm:text-5xl text-gray-300 dark:text-gray-600 mb-3 sm:mb-4"
           ></i>
           <p class="text-sm sm:text-lg text-gray-500 dark:text-gray-400">
-            Panduan tidak ditemukan. Silakan coba kata kunci lain.
+            Panduan tidak ditemukan. Silakan coba kata kunci atau kategori lain.
           </p>
         </div>
 
@@ -667,24 +726,45 @@
         </div>
 
         <div
-          class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center relative z-10"
+          class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-y-6 sm:gap-y-8 lg:gap-x-8 lg:gap-y-10 lg:items-stretch relative z-10"
         >
-          <div class="space-y-5 sm:space-y-6 reveal">
-            <div>
-              <h3 class="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">
-                Hubungi Kami
-              </h3>
-              <p class="text-sm sm:text-base text-brand-100 opacity-90">
-                Layanan Radiologi RSUD R.T. Notopuro Sidoarjo
-              </p>
-            </div>
+          <div class="order-2 lg:order-1 lg:col-span-12 text-center reveal">
+            <h3 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-1 sm:mb-2">
+              Hubungi Kami
+            </h3>
+            <p
+              class="text-sm sm:text-base lg:text-lg text-brand-100 opacity-90"
+            >
+              Layanan Radiologi RSUD R.T. Notopuro Sidoarjo
+            </p>
+            <div
+              class="hidden lg:block w-20 h-1 bg-white/40 mx-auto mt-4 rounded-full"
+            ></div>
+          </div>
 
+          <div
+            class="order-1 lg:order-2 lg:col-span-3 flex items-center justify-center reveal"
+          >
+            <div
+              class="w-36 h-36 sm:w-44 sm:h-44 lg:w-full lg:h-full lg:min-h-[260px] rounded-3xl lg:rounded-2xl bg-white/15 backdrop-blur-md border border-white/25 p-3.5 sm:p-4 lg:p-6 shadow-2xl flex items-center justify-center transition-transform duration-300 hover:scale-[1.02]"
+            >
+              <img
+                src="https://drive.google.com/thumbnail?id=1_PbLktAL4b5iq2E99NYvfXDTePi7TwfB&sz=w500"
+                alt="Logo Layanan Radiologi RSUD R.T. Notopuro Sidoarjo"
+                class="w-full h-full lg:max-w-[210px] lg:max-h-[210px] object-contain drop-shadow-md rounded-2xl"
+              />
+            </div>
+          </div>
+
+          <div
+            class="order-3 lg:order-3 lg:col-span-5 lg:h-full lg:bg-white/10 lg:backdrop-blur-md lg:border lg:border-white/20 lg:rounded-2xl lg:p-6 lg:shadow-2xl flex flex-col justify-center reveal"
+          >
             <ul
-              class="space-y-4 sm:space-y-5 text-brand-50 mt-4 sm:mt-6 text-sm sm:text-base"
+              class="space-y-4 sm:space-y-5 text-brand-50 text-sm sm:text-base"
             >
               <li class="flex items-start gap-3 sm:gap-4">
                 <div
-                  class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0"
+                  class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/15 flex items-center justify-center shrink-0"
                 >
                   <i class="fa-solid fa-location-dot text-base sm:text-xl"></i>
                 </div>
@@ -695,26 +775,26 @@
               </li>
               <li class="flex items-center gap-3 sm:gap-4">
                 <div
-                  class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0"
+                  class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/15 flex items-center justify-center shrink-0"
                 >
                   <i class="fa-brands fa-whatsapp text-base sm:text-xl"></i>
                 </div>
                 <a
                   href="https://wa.me/6287711309994"
                   target="_blank"
-                  class="pt-1 hover:text-brand-200 transition"
+                  class="hover:text-brand-200 transition"
                   >+62 877-1130-9994</a
                 >
               </li>
               <li class="flex items-center gap-3 sm:gap-4">
                 <div
-                  class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/10 flex items-center justify-center shrink-0"
+                  class="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/15 flex items-center justify-center shrink-0"
                 >
                   <i class="fa-solid fa-envelope text-sm sm:text-lg"></i>
                 </div>
                 <a
                   href="mailto:radiologirsudrtnsidoarjo@gmail.com"
-                  class="pt-1 hover:text-brand-200 transition break-all"
+                  class="hover:text-brand-200 transition break-all"
                   >radiologirsudrtnsidoarjo@gmail.com</a
                 >
               </li>
@@ -722,7 +802,7 @@
           </div>
 
           <div
-            class="h-[250px] sm:h-[300px] w-full rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10 reveal"
+            class="order-4 lg:order-4 lg:col-span-4 h-[250px] sm:h-[280px] lg:h-full lg:min-h-[260px] w-full rounded-2xl overflow-hidden shadow-2xl border-4 border-white/15 reveal"
           >
             <iframe
               src="https://maps.google.com/maps?q=Jl.%20Mojopahit%20No.667,%20Sidowayah,%20Celep,%20Kec.%20Sidoarjo,%20Kabupaten%20Sidoarjo,%20Jawa%20Timur%2061215&t=&z=15&ie=UTF8&iwloc=&output=embed"
@@ -848,94 +928,163 @@
 
       const postsData = [
         {
-          id: "1uDv4o9HPD6Yfkz361T2BW_twLiUUmqHG",
-          title: "Radiologi RSUD R.T. NOTOPURO SIDOARJO",
-          description: "",
-        },
-        {
           id: "1pBx8LlM6SR7dLAJBGhMIxYK5UPYiR9zr",
           title: "Layanan Radiologi Unggulan (Akurat, Cepat, Profesional)",
           description: "",
-        },
-        {
-          id: "1A8fU7EJTc_iBrpc-fvyRzvrjUVlS-X7j",
-          title:
-            "Alur Radiologi SIAP (Sistem Informasi Akses Pelayanan Radiologi)",
-          description: "",
+          category: "layanan-unggulan",
         },
         {
           id: "1j0PLEp37d5lGKH6Xo70byeKRDO2Sqm__",
           title: "Panduan Persiapan Pemeriksaan MSCT Calcium Scoring",
           description: "",
+          category: "persiapan-pemeriksaan",
         },
         {
           id: "1AKyoFisXPwP-s4EUMs4BvKYyFk39JBAG",
           title: "Panduan Persiapan USG Upper & Lower Abdomen",
           description: "",
+          category: "persiapan-pemeriksaan",
         },
         {
           id: "1gAkjALFZaLk0eA8j__zoOFPfkVilSrFr",
           title: "Persiapan Pemeriksaan USG (Lower, Kandungan, Urologi)",
           description: "",
+          category: "persiapan-pemeriksaan",
         },
         {
           id: "1dTBboVDOKWLN9UDtSx3UzzY4HDSj5M0-",
           title: "Panduan Persiapan CT-Scan Abdomen Non Kontras / Stonografi",
           description: "",
+          category: "persiapan-pemeriksaan",
         },
         {
           id: "1eTm5u9Ot58idsSgL8rJssW5OFDkyvntS",
           title: "Panduan Persiapan MSCT Angiografi",
           description: "",
+          category: "persiapan-pemeriksaan",
         },
         {
           id: "1Aec_mXwCEPwrGMGRK71GBwZlWi8fBPJN",
           title: "Memahami CT-Scan Angiografi (CTA)",
           description: "",
+          category: "",
         },
         {
           id: "1EZVHzYM_COg5J6JyOufPOo1eOjwLDejh",
           title: "Panduan Persiapan USG",
-          description: "",
+          description: "persiapan-pemeriksaan",
+          category: "",
         },
         {
           id: "1zBctoYsNvSNJitfUSfhKiLThonraMLlz",
           title: "Panduan Persiapan Pemeriksaan (Umum)",
-          description: "",
+          description: "persiapan-pemeriksaan",
+          category: "",
         },
         {
           id: "1reRZ9iWWNA4Qvw_6OA2ReHRnwimsDjyr",
           title: "Panduan Persiapan USG Abdomen Upper (Bagian Atas)",
           description: "",
+          category: "persiapan-pemeriksaan",
         },
         {
           id: "1l7sPoW21ns5l_Mj5gzP9G_Vs7VtMjR84",
           title: "Persiapan Pemeriksaan MSCT Abdomen Dengan Kontras",
           description: "",
+          category: "persiapan-pemeriksaan",
+        },
+        {
+          id: "1vFBAl77zaEN3aGZgBQ0A7FOXQP3ClEBT",
+          title: "Persiapan Pemeriksaan MRI Non Kontras",
+          description: "",
+          category: "persiapan-pemeriksaan",
+        },
+        {
+          id: "1v8DkHCci0ImZ6BmTeEJEgOKbR964RRyU",
+          title: "Persiapan Pemeriksaan MRI Kontras",
+          description: "",
+          category: "persiapan-pemeriksaan",
         },
         {
           id: "1iONNlY1DRqFBjNWP1KsE8sfG6clR5Dcp",
           title: "Tarif Layanan CT-Scan 16 dan 64 Slices",
           description:
             "Tarif layanan pemeriksaan CT-Scan 16 dan 64 Slices ini mengacu pada PERDA Kabupaten Sidoarjo Nomor 4 Tahun 2025.",
+          category: "tarif-layanan",
         },
         {
           id: "1SsySBdOv0flO1mz1XWTgqHBMa3lP9_gv",
           title: "Tarif Layanan CT-Scan 128 Slices",
           description:
             "Tarif layanan pemeriksaan CT-Scan 128 Slices ini mengacu pada PERDA Kabupaten Sidoarjo Nomor 4 Tahun 2025.",
+          category: "tarif-layanan",
+        },
+        {
+          id: "1FO4LYf5LUBbf4O_w7KIffzhN1_c5Y-QK",
+          title: "Tarif Layanan X-Ray",
+          description:
+            "Tarif layanan pemeriksaan X-Ray ini mengacu pada PERDA Kabupaten Sidoarjo Nomor 4 Tahun 2025.",
+          category: "tarif-layanan",
+        },
+        {
+          id: "13id889sdc881FhNdgWko1vFkWcXq1txN",
+          title: "Tarif Layanan X-Ray",
+          description:
+            "Tarif layanan pemeriksaan X-Ray ini mengacu pada PERDA Kabupaten Sidoarjo Nomor 4 Tahun 2025.",
+          category: "tarif-layanan",
+        },
+        {
+          id: "1pGMtzq5qqh3ATHh7GuuQOGLABNGEg6Z7",
+          title: "Tarif Layanan X-Ray",
+          description:
+            "Tarif layanan pemeriksaan X-Ray ini mengacu pada PERDA Kabupaten Sidoarjo Nomor 4 Tahun 2025.",
+          category: "tarif-layanan",
+        },
+        {
+          id: "1pB_WnuhT4pjgCLfQ-Gdcxh1v_mN6t8_5",
+          title: "Tarif Layanan X-Ray",
+          description:
+            "Tarif layanan pemeriksaan X-Ray ini mengacu pada PERDA Kabupaten Sidoarjo Nomor 4 Tahun 2025.",
+          category: "tarif-layanan",
+        },
+        {
+          id: "1DjagxkRteJU_mb2hUZUrSzDFEOedAxlM",
+          title: "Tarif Layanan X-Ray",
+          description:
+            "Tarif layanan pemeriksaan X-Ray ini mengacu pada PERDA Kabupaten Sidoarjo Nomor 4 Tahun 2025.",
+          category: "tarif-layanan",
+        },
+        {
+          id: "1hxFbtryZ4oMZHJZL-wJqGgnZnlCs7_ig",
+          title: "Tarif Layanan USG",
+          description:
+            "Tarif layanan pemeriksaan USG ini mengacu pada PERDA Kabupaten Sidoarjo Nomor 4 Tahun 2025.",
+          category: "tarif-layanan",
         },
         {
           id: "1spYAdW_j1oTSKPV8Dz655cDa_yR_7ykJ",
           title: "Tarif Layanan MRI 3 Tesla",
           description:
             "Tarif layanan pemeriksaan MRI 3 TESLA ini mengacu pada PERDA Kabupaten Sidoarjo Nomor 4 Tahun 2025.",
+          category: "tarif-layanan",
+        },
+        {
+          id: "13cCYQMW_tvXige84IHi1-IhNW9sBmvh7",
+          title: "Tarif Layanan MRI 3 Tesla",
+          description:
+            "Tarif layanan pemeriksaan MRI 3 Tesla ini mengacu pada PERDA Kabupaten Sidoarjo Nomor 4 Tahun 2025.",
+          category: "tarif-layanan",
         },
       ];
 
+      let currentCategory = "all";
       let visiblePosts = [...postsData];
       let currentLightboxIndex = 0;
       const gridContainer = document.getElementById("content-grid");
+      const searchInput = document.getElementById("searchInput");
+      const clearSearchBtn = document.getElementById("clearSearchBtn");
+      const emptyState = document.getElementById("empty-state");
+      const categoryBtns = document.querySelectorAll(".category-btn");
 
       function renderGrid(dataToRender) {
         gridContainer.innerHTML = "";
@@ -962,20 +1111,22 @@
         });
         setTimeout(initScrollReveal, 100);
       }
-      renderGrid(visiblePosts);
 
-      const searchInput = document.getElementById("searchInput");
-      const clearSearchBtn = document.getElementById("clearSearchBtn");
-      const emptyState = document.getElementById("empty-state");
+      function applyFilters() {
+        const searchTerm = searchInput.value.toLowerCase();
+        if (searchTerm.length > 0) {
+          clearSearchBtn.classList.remove("hidden");
+        } else {
+          clearSearchBtn.classList.add("hidden");
+        }
 
-      searchInput.addEventListener("input", function (e) {
-        const searchTerm = e.target.value.toLowerCase();
-        if (searchTerm.length > 0) clearSearchBtn.classList.remove("hidden");
-        else clearSearchBtn.classList.add("hidden");
+        visiblePosts = postsData.filter((post) => {
+          const matchesCategory =
+            currentCategory === "all" || post.category === currentCategory;
+          const matchesSearch = post.title.toLowerCase().includes(searchTerm);
+          return matchesCategory && matchesSearch;
+        });
 
-        visiblePosts = postsData.filter((post) =>
-          post.title.toLowerCase().includes(searchTerm),
-        );
         if (visiblePosts.length > 0) {
           emptyState.classList.add("hidden");
           renderGrid(visiblePosts);
@@ -983,11 +1134,78 @@
           gridContainer.innerHTML = "";
           emptyState.classList.remove("hidden");
         }
+      }
+
+      function setCategory(category, resetSearch = false) {
+        currentCategory = category;
+
+        if (resetSearch) {
+          searchInput.value = "";
+        }
+
+        categoryBtns.forEach((btn) => {
+          const isSelected = btn.getAttribute("data-category") === category;
+          if (isSelected) {
+            btn.classList.remove(
+              "bg-white",
+              "dark:bg-dark-card",
+              "text-gray-600",
+              "dark:text-gray-300",
+              "border-gray-200",
+              "dark:border-gray-700",
+              "hover:border-brand-500",
+              "hover:text-brand-600",
+              "dark:hover:text-brand-400",
+              "shadow-sm",
+            );
+            btn.classList.add(
+              "bg-brand-500",
+              "text-white",
+              "border-brand-500",
+              "shadow-md",
+              "shadow-brand-500/25",
+            );
+          } else {
+            btn.classList.remove(
+              "bg-brand-500",
+              "text-white",
+              "border-brand-500",
+              "shadow-md",
+              "shadow-brand-500/25",
+            );
+            btn.classList.add(
+              "bg-white",
+              "dark:bg-dark-card",
+              "text-gray-600",
+              "dark:text-gray-300",
+              "border-gray-200",
+              "dark:border-gray-700",
+              "hover:border-brand-500",
+              "hover:text-brand-600",
+              "dark:hover:text-brand-400",
+              "shadow-sm",
+            );
+          }
+        });
+
+        applyFilters();
+        updateActiveNavOnScroll();
+      }
+
+      categoryBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const selectedCategory = btn.getAttribute("data-category");
+          setCategory(selectedCategory, false);
+        });
       });
+
+      renderGrid(visiblePosts);
+
+      searchInput.addEventListener("input", applyFilters);
 
       clearSearchBtn.addEventListener("click", () => {
         searchInput.value = "";
-        searchInput.dispatchEvent(new Event("input"));
+        applyFilters();
         searchInput.focus();
       });
 
@@ -1096,8 +1314,62 @@
       const mobileLinks = document.querySelectorAll(".mobile-link");
       const scrollTopBtn = document.getElementById("scrollToTopBtn");
 
+      function updateActiveNavOnScroll() {
+        let current = "beranda";
+        const scrollY = window.pageYOffset;
+
+        sections.forEach((section) => {
+          if (scrollY >= section.offsetTop - 150) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((a) => {
+          a.classList.remove("active");
+          const href = a.getAttribute("href");
+          const navCat = a.getAttribute("data-nav-category");
+
+          if (current === "edukasi") {
+            if (href === "#edukasi" && navCat === currentCategory) {
+              a.classList.add("active");
+            }
+          } else if (href === `#${current}`) {
+            a.classList.add("active");
+          }
+        });
+
+        mobileLinks.forEach((a) => {
+          a.classList.remove(
+            "text-brand-600",
+            "bg-brand-50",
+            "dark:text-brand-400",
+            "dark:bg-gray-800",
+          );
+          a.classList.add("text-gray-700", "dark:text-gray-300");
+
+          const href = a.getAttribute("href");
+          const navCat = a.getAttribute("data-nav-category");
+          let isMatch = false;
+
+          if (current === "edukasi") {
+            isMatch = href === "#edukasi" && navCat === currentCategory;
+          } else {
+            isMatch = href === `#${current}`;
+          }
+
+          if (isMatch) {
+            a.classList.remove("text-gray-700", "dark:text-gray-300");
+            a.classList.add(
+              "text-brand-600",
+              "bg-brand-50",
+              "dark:text-brand-400",
+              "dark:bg-gray-800",
+            );
+          }
+        });
+      }
+
       window.addEventListener("scroll", () => {
-        let current = "";
         const scrollY = window.pageYOffset;
 
         if (scrollY > 20) {
@@ -1130,35 +1402,7 @@
           );
         }
 
-        sections.forEach((section) => {
-          if (scrollY >= section.offsetTop - 150)
-            current = section.getAttribute("id");
-        });
-
-        navLinks.forEach((a) => {
-          a.classList.remove("active");
-          if (a.getAttribute("href") === `#${current}`)
-            a.classList.add("active");
-        });
-
-        mobileLinks.forEach((a) => {
-          a.classList.remove(
-            "text-brand-600",
-            "bg-brand-50",
-            "dark:text-brand-400",
-            "dark:bg-gray-800",
-          );
-          a.classList.add("text-gray-700", "dark:text-gray-300");
-          if (a.getAttribute("href") === `#${current}`) {
-            a.classList.remove("text-gray-700", "dark:text-gray-300");
-            a.classList.add(
-              "text-brand-600",
-              "bg-brand-50",
-              "dark:text-brand-400",
-              "dark:bg-gray-800",
-            );
-          }
-        });
+        updateActiveNavOnScroll();
       });
 
       scrollTopBtn.addEventListener("click", () => {
@@ -1202,6 +1446,12 @@
         anchor.addEventListener("click", function (e) {
           const targetId = this.getAttribute("href");
           if (targetId === "#") return;
+
+          const navCategory = this.getAttribute("data-nav-category");
+          if (navCategory) {
+            setCategory(navCategory, true);
+          }
+
           const targetElement = document.querySelector(targetId);
           if (targetElement) {
             e.preventDefault();

@@ -1,82 +1,140 @@
 [
   {
-    "id": "1uDv4o9HPD6Yfkz361T2BW_twLiUUmqHG",
-    "title": "Radiologi RSUD R.T. NOTOPURO SIDOARJO",
-    "description": ""
-  },
-  {
     "id": "1pBx8LlM6SR7dLAJBGhMIxYK5UPYiR9zr",
     "title": "Layanan Radiologi Unggulan (Akurat, Cepat, Profesional)",
-    "description": ""
-  },
-  {
-    "id": "1A8fU7EJTc_iBrpc-fvyRzvrjUVlS-X7j",
-    "title": "Alur Radiologi SIAP (Sistem Informasi Akses Pelayanan Radiologi)",
-    "description": ""
+    "description": "",
+    "category": "layanan-unggulan"
   },
   {
     "id": "1j0PLEp37d5lGKH6Xo70byeKRDO2Sqm__",
     "title": "Panduan Persiapan Pemeriksaan MSCT Calcium Scoring",
-    "description": ""
+    "description": "",
+    "category": "persiapan-pemeriksaan"
   },
   {
     "id": "1AKyoFisXPwP-s4EUMs4BvKYyFk39JBAG",
     "title": "Panduan Persiapan USG Upper & Lower Abdomen",
-    "description": ""
+    "description": "",
+    "category": "persiapan-pemeriksaan"
   },
   {
     "id": "1gAkjALFZaLk0eA8j__zoOFPfkVilSrFr",
     "title": "Persiapan Pemeriksaan USG (Lower, Kandungan, Urologi)",
-    "description": ""
+    "description": "",
+    "category": "persiapan-pemeriksaan"
   },
   {
     "id": "1dTBboVDOKWLN9UDtSx3UzzY4HDSj5M0-",
     "title": "Panduan Persiapan CT-Scan Abdomen Non Kontras / Stonografi",
-    "description": ""
+    "description": "",
+    "category": "persiapan-pemeriksaan"
   },
   {
     "id": "1eTm5u9Ot58idsSgL8rJssW5OFDkyvntS",
     "title": "Panduan Persiapan MSCT Angiografi",
-    "description": ""
+    "description": "",
+    "category": "persiapan-pemeriksaan"
   },
   {
     "id": "1Aec_mXwCEPwrGMGRK71GBwZlWi8fBPJN",
     "title": "Memahami CT-Scan Angiografi (CTA)",
-    "description": ""
+    "description": "",
+    "category": ""
   },
   {
     "id": "1EZVHzYM_COg5J6JyOufPOo1eOjwLDejh",
     "title": "Panduan Persiapan USG",
-    "description": ""
+    "description": "persiapan-pemeriksaan",
+    "category": ""
   },
   {
     "id": "1zBctoYsNvSNJitfUSfhKiLThonraMLlz",
     "title": "Panduan Persiapan Pemeriksaan (Umum)",
-    "description": ""
+    "description": "persiapan-pemeriksaan",
+    "category": ""
   },
   {
     "id": "1reRZ9iWWNA4Qvw_6OA2ReHRnwimsDjyr",
     "title": "Panduan Persiapan USG Abdomen Upper (Bagian Atas)",
-    "description": ""
+    "description": "",
+    "category": "persiapan-pemeriksaan"
   },
   {
     "id": "1l7sPoW21ns5l_Mj5gzP9G_Vs7VtMjR84",
     "title": "Persiapan Pemeriksaan MSCT Abdomen Dengan Kontras",
-    "description": ""
+    "description": "",
+    "category": "persiapan-pemeriksaan"
+  },
+  {
+    "id": "1vFBAl77zaEN3aGZgBQ0A7FOXQP3ClEBT",
+    "title": "Persiapan Pemeriksaan MRI Non Kontras",
+    "description": "",
+    "category": "persiapan-pemeriksaan"
+  },
+  {
+    "id": "1v8DkHCci0ImZ6BmTeEJEgOKbR964RRyU",
+    "title": "Persiapan Pemeriksaan MRI Kontras",
+    "description": "",
+    "category": "persiapan-pemeriksaan"
   },
   {
     "id": "1iONNlY1DRqFBjNWP1KsE8sfG6clR5Dcp",
     "title": "Tarif Layanan CT-Scan 16 dan 64 Slices",
-    "description": "Tarif layanan pemeriksaan CT-Scan 16 dan 64 Slices ini mengacu pada PERDA Kabupaten Sidoarjo Nomor 4 Tahun 2025."
+    "description": "Tarif layanan pemeriksaan CT-Scan 16 dan 64 Slices ini mengacu pada PERDA Kabupaten Sidoarjo Nomor 4 Tahun 2025.",
+    "category": "tarif-layanan"
   },
   {
     "id": "1SsySBdOv0flO1mz1XWTgqHBMa3lP9_gv",
     "title": "Tarif Layanan CT-Scan 128 Slices",
-    "description": "Tarif layanan pemeriksaan CT-Scan 128 Slices ini mengacu pada PERDA Kabupaten Sidoarjo Nomor 4 Tahun 2025."
+    "description": "Tarif layanan pemeriksaan CT-Scan 128 Slices ini mengacu pada PERDA Kabupaten Sidoarjo Nomor 4 Tahun 2025.",
+    "category": "tarif-layanan"
+  },
+  {
+    "id": "1FO4LYf5LUBbf4O_w7KIffzhN1_c5Y-QK",
+    "title": "Tarif Layanan X-Ray",
+    "description": "Tarif layanan pemeriksaan X-Ray ini mengacu pada PERDA Kabupaten Sidoarjo Nomor 4 Tahun 2025.",
+    "category": "tarif-layanan"
+  },
+  {
+    "id": "13id889sdc881FhNdgWko1vFkWcXq1txN",
+    "title": "Tarif Layanan X-Ray",
+    "description": "Tarif layanan pemeriksaan X-Ray ini mengacu pada PERDA Kabupaten Sidoarjo Nomor 4 Tahun 2025.",
+    "category": "tarif-layanan"
+  },
+  {
+    "id": "1pGMtzq5qqh3ATHh7GuuQOGLABNGEg6Z7",
+    "title": "Tarif Layanan X-Ray",
+    "description": "Tarif layanan pemeriksaan X-Ray ini mengacu pada PERDA Kabupaten Sidoarjo Nomor 4 Tahun 2025.",
+    "category": "tarif-layanan"
+  },
+  {
+    "id": "1pB_WnuhT4pjgCLfQ-Gdcxh1v_mN6t8_5",
+    "title": "Tarif Layanan X-Ray",
+    "description": "Tarif layanan pemeriksaan X-Ray ini mengacu pada PERDA Kabupaten Sidoarjo Nomor 4 Tahun 2025.",
+    "category": "tarif-layanan"
+  },
+  {
+    "id": "1DjagxkRteJU_mb2hUZUrSzDFEOedAxlM",
+    "title": "Tarif Layanan X-Ray",
+    "description": "Tarif layanan pemeriksaan X-Ray ini mengacu pada PERDA Kabupaten Sidoarjo Nomor 4 Tahun 2025.",
+    "category": "tarif-layanan"
+  },
+  {
+    "id": "1hxFbtryZ4oMZHJZL-wJqGgnZnlCs7_ig",
+    "title": "Tarif Layanan USG",
+    "description": "Tarif layanan pemeriksaan USG ini mengacu pada PERDA Kabupaten Sidoarjo Nomor 4 Tahun 2025.",
+    "category": "tarif-layanan"
   },
   {
     "id": "1spYAdW_j1oTSKPV8Dz655cDa_yR_7ykJ",
     "title": "Tarif Layanan MRI 3 Tesla",
-    "description": "Tarif layanan pemeriksaan MRI 3 TESLA ini mengacu pada PERDA Kabupaten Sidoarjo Nomor 4 Tahun 2025."
+    "description": "Tarif layanan pemeriksaan MRI 3 TESLA ini mengacu pada PERDA Kabupaten Sidoarjo Nomor 4 Tahun 2025.",
+    "category": "tarif-layanan"
+  },
+  {
+    "id": "13cCYQMW_tvXige84IHi1-IhNW9sBmvh7",
+    "title": "Tarif Layanan MRI 3 Tesla",
+    "description": "Tarif layanan pemeriksaan MRI 3 Tesla ini mengacu pada PERDA Kabupaten Sidoarjo Nomor 4 Tahun 2025.",
+    "category": "tarif-layanan"
   }
 ]
